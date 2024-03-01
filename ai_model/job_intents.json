@@ -1,0 +1,37 @@
+{
+    "intents": [
+        {
+            "tag": "Frigo Eco",
+            "patterns": [
+                "gaz minime, eau, electricit\u00e9",
+                "Les r\u00e9frig\u00e9rateurs nuisent \u00e0 l'environnement en utilisant de l'\u00e9lectricit\u00e9 non renouvelable. J'ai cr\u00e9er une r\u00e9frig\u00e9rateurs en utilisant les minimum d'energie non renouveleble"
+            ],
+            "publicationId": 36,
+            "responses": [
+                "Les r\u00e9frig\u00e9rateurs nuisent \u00e0 l'environnement en utilisant de l'\u00e9lectricit\u00e9 non renouvelable. J'ai cr\u00e9er une r\u00e9frig\u00e9rateurs en utilisant les minimum d'energie non renouveleble"
+            ]
+        },
+        {
+            "tag": "petrole Eco",
+            "patterns": [
+                "eau, electricit\u00e9",
+                "Les petrole nuisent \u00e0 l'environnement en utilisant de l'\u00e9lectricit\u00e9 non renouvelable. J'ai cr\u00e9er une fatana en utilisant les minimum d'energie non renouveleble"
+            ],
+            "publicationId": 37,
+            "responses": [
+                "Les petrole nuisent \u00e0 l'environnement en utilisant de l'\u00e9lectricit\u00e9 non renouvelable. J'ai cr\u00e9er une fatana en utilisant les minimum d'energie non renouveleble"
+            ]
+        },
+        {
+            "tag": "voiture Eco",
+            "patterns": [
+                "voiture, electricit\u00e9",
+                "Voiture electricit\u00e9"
+            ],
+            "publicationId": 43,
+            "responses": [
+                "Voiture electricit\u00e9"
+            ]
+        }
+    ]
+}

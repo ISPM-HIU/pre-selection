@@ -1,6 +1,7 @@
 import { Response, Request } from "express"
 import { generateToken, uploadFile } from '../services/services'
 import model from "../models/publications"
+import { send_to_model } from "../services/send-to-model"
 
 const controller = {
     getAll: async (req: Request, res: Response) => {
@@ -74,6 +75,7 @@ const controller = {
         } = req.body
         let url_image = null
 
+        let userId = parseInt(req.body.userId)
         try {
 
             if(req.files && req.files.image && req.files.image.name){
@@ -82,8 +84,6 @@ const controller = {
                     url_image = src
                 }
             }
-
-            let userId = parseInt(req.body.userId)
             let response = await model.create(
                 description,
                 products,
@@ -93,10 +93,11 @@ const controller = {
                 product_name
             )
             if(response) {
+                let allPublication = await model.getAll()
+                send_to_model(allPublication)
                 res.status(200).send(response)
             }
             else res.status(500).send("Creation failed")
-            
         }
         catch (error: any) {
             console.log(error)
