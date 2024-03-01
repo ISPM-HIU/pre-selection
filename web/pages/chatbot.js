@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Container, Row, Col, Card,Image, Tab, Form, Dropdown, Button } from 'react-bootstrap';
 import { PageHeading } from 'widgets'; 
 
-
 const ChatBot = () => {
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState('');
@@ -32,7 +31,7 @@ const ChatBot = () => {
       messages: [
         {
           role: "system",
-          content: "You are an assistant who gives advice in order to transform these products through ecological projects.",
+          content: "Vous êtes un assistant qui donne des conseils afin de rassembler et transformer ces produits à travers des projets écologiques.",
         },
         {
           role: "user",
@@ -43,8 +42,8 @@ const ChatBot = () => {
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer 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",
+        "Authorization":
+          "Bearer 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",
       },
     };
     try {
@@ -129,6 +128,8 @@ const ChatBot = () => {
                         </Row>
                     </Form.Group>
                 </Form>
+
+                {botResults}
 
               </Card.Body>
             </Card>

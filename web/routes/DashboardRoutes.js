@@ -54,9 +54,9 @@ export const DashboardMenu = [
 		title: 'ChatBot',
 		icon: "cloud"
 	},
-	{
-		id: uuid(), link: '/404', name: '404 Error'
-	},
+	// {
+	// 	id: uuid(), link: '/404', name: '404 Error'
+	// },
 
 	// {
 	// 	id: uuid(),
