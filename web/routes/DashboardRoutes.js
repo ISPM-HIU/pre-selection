@@ -38,20 +38,26 @@ export const DashboardMenu = [
 	},
 	{
 		id: uuid(),
+		link: '/post-add',
+		title: 'Créer une publication',
+		icon: "layers"
+	},
+	{
+		id: uuid(),
 		link: '/materials',
 		title: 'Liste des materiels',
 		icon: "book"
 	},
 	{
 		id: uuid(),
-		link: '/billing',
-		title: 'Publication',
-		icon: "layers"
+		link: '/pricing',
+		title: 'Pricing'
 	},
 	{
 		id: uuid(),
-		link: '/pricing',
-		title: 'Pricing'
+		link: '/chatbot',
+		title: 'ChatBot',
+		icon: "cloud"
 	},
 	{
 		id: uuid(), link: '/404', name: '404 Error'
