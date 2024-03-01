@@ -14,9 +14,9 @@ import DefaultDashboardLayout from 'layouts/DefaultDashboardLayout';
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const pageURL = process.env.baseURL + router.pathname;
-  const title = "Eco Marcket";
+  const title = "Eco Market";
   const description = "IGGLIA 4 "
-  const keywords = "Eco Marcket"
+  const keywords = "Eco Market"
 
   // Identify the layout, which will be applied conditionally
   const Layout = Component.Layout || (router.pathname.includes('dashboard') ? 

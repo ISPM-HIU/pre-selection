@@ -21,12 +21,17 @@ const produit = {
 }
 
 import { useState } from 'react';
+
 const Billing = () => {
+  const [data, setData] = useState();
   const [infoProduit, setInfoProduit] = useState({});
   const [matieres, setMatieres] = useState([{ id: 1, name: '' }]);
 
-  const handleGlobalChange = () => {
-
+  const handleChange = (e) => {
+    setData({
+      ...data,
+      [e.target.name]:e.target.value
+    })
   }
 
   const addMatiere = () => {
@@ -69,6 +74,8 @@ const Billing = () => {
                       <div className="col-md-8 col-12">
                         <input
                           type="text"
+                          onChange={handleChange}
+                          name="product_name"
                           className="form-control"
                           placeholder="Entrez le nom de votre produit"
                           id="nomProduit"
@@ -79,11 +86,14 @@ const Billing = () => {
                     {/* row */}
                     <Row className="mb-3">
                       <Form.Label className="col-sm-4" htmlFor="description">
-                        Description <span className="text-muted">(Optionnelle)</span>
+                        Description 
                       </Form.Label>
                       <Col md={8} xs={12}>
-                        <Form.Control
-                          type="text"
+                        <Form.Control 
+                          as="textarea" 
+                          name="description"
+                          rows={3}
+                          type="textarea"
                           placeholder="Entrez sa description"
                           id="description"
                         />
@@ -131,9 +141,7 @@ const Billing = () => {
                       </Col>
                       <Col md={8}>
                         {/* dropzone input */}
-                        <Card className="dropzone mb-3 py-10 border-dashed">
-                          <DropFiles />
-                        </Card>
+                        <Form.Control type="file" />
                       </Col>
                     </Row>
                     <Row>

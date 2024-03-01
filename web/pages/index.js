@@ -4,8 +4,40 @@ import Link from "next/link";
 
 // import authlayout to override default layout
 import AuthLayout from "layouts/AuthLayout";
+import { useState } from "react";
+import useHttps from "hooks/useHttp";
+import { useRouter } from "next/router";
+import { setToken } from "services/token";
 
 const SignIn = () => {
+  const [data, setData] = useState();
+  const [loading, setLoading] = useState(false);
+  const router = useRouter()
+  const { http } = useHttps();
+  const handleChange = (e) => {
+    setData({
+      ...data,
+      [e.target.name]:e.target.value
+    })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      setLoading(true)
+      console.log(data)
+      let response = await http.post("/users/login", data)
+      if(response) {
+        setToken(response.data)
+        router.push("/home")
+        setLoading(false)
+      }
+    } catch (error) {
+      setLoading(false)
+      console.log(error)
+    }
+  }
+
   return (
     <Row className="align-items-center justify-content-center g-0 min-vh-100">
       <Col xxl={4} lg={6} md={8} xs={12} className="py-8 py-xl-0">
@@ -16,21 +48,22 @@ const SignIn = () => {
             <div className="mb-4">
               <Link href="/">
                 <Image
-                  src="/images/brand/logo/logo-primary.svg"
+                  src="/images/logo.jpg"
                   className="mb-2"
-                  alt=""
+                  width={100}
                 />
               </Link>
-              <p className="mb-6">Please enter your user information.</p>
+              <p className="mb-6">Veuillez saisir vos informations d'utilisateur.</p>
             </div>
             {/* Form */}
-            <Form>
+            <Form onSubmit={handleSubmit}>
               {/* Username */}
               <Form.Group className="mb-3" controlId="username">
-                <Form.Label>Username or email</Form.Label>
+                <Form.Label>Email</Form.Label>
                 <Form.Control
                   type="email"
-                  name="username"
+                  onChange={handleChange}
+                  name="email"
                   placeholder="Enter address here"
                   required=""
                 />
@@ -38,9 +71,10 @@ const SignIn = () => {
 
               {/* Password */}
               <Form.Group className="mb-3" controlId="password">
-                <Form.Label>Password</Form.Label>
+                <Form.Label>Mot de passe</Form.Label>
                 <Form.Control
                   type="password"
+                  onChange={handleChange}
                   name="password"
                   placeholder="**************"
                   required=""
@@ -51,20 +85,20 @@ const SignIn = () => {
               <div className="d-lg-flex justify-content-between align-items-center mb-4">
                 <Form.Check type="checkbox" id="rememberme">
                   <Form.Check.Input type="checkbox" />
-                  <Form.Check.Label>Remember me</Form.Check.Label>
+                  <Form.Check.Label>Souviens-toi de moi</Form.Check.Label>
                 </Form.Check>
               </div>
               <div>
                 {/* Button */}
                 <div className="d-grid">
                   <Button variant="primary" type="submit">
-                    Sign In
+                    {loading ? "Chargement..." : "Connexion"}
                   </Button>
                 </div>
                 <div className="d-md-flex justify-content-between mt-4">
                   <div className="mb-2 mb-md-0">
                     <Link href="/sign-up" className="fs-5">
-                      Create An Account{" "}
+                      Créer un compte{" "}
                     </Link>
                   </div>
                   <div>
@@ -72,7 +106,7 @@ const SignIn = () => {
                       href="/forget-password"
                       className="text-inherit fs-5"
                     >
-                      Forgot your password?
+                      Mot de passe oublié?
                     </Link>
                   </div>
                 </div>

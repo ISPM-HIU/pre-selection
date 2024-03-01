@@ -19,11 +19,12 @@ import NotificationList from 'data/Notification';
 
 // import hooks
 import useMounted from 'hooks/useMounted';
+import { useRouter } from 'next/router';
+import { clearToken, getToken } from 'services/token';
 
 const QuickMenu = () => {
-
+    const router = useRouter()
     const hasMounted = useMounted();
-    
     const isDesktop = useMediaQuery({
         query: '(min-width: 1224px)'
     })
@@ -52,6 +53,7 @@ const QuickMenu = () => {
     }
 
     const QuickMenuDesktop = () => {
+        const token = getToken();
         return (
         <ListGroup as="ul" bsPrefix='navbar-nav' className="navbar-right-wrap ms-auto d-flex nav-top-wrap">
             <Dropdown as="li" className="stopevent">
@@ -103,8 +105,8 @@ const QuickMenu = () => {
                     >
                     <Dropdown.Item as="div" className="px-4 pb-0 pt-2" bsPrefix=' '>
                             <div className="lh-1 ">
-                                <h5 className="mb-1"> John E. Grainger</h5>
-                                <Link href="/profile" className="text-inherit fs-6">Voir mon profil</Link>
+                                <h5 className="mb-1" >{token&& token.user.name}</h5>
+                                <Link href="/profile" className="text-inherit fs-6">{token&& token.user.email}</Link>
                             </div>
                             <div className=" dropdown-divider mt-3 mb-2"></div>
                     </Dropdown.Item>
@@ -112,7 +114,7 @@ const QuickMenu = () => {
                         <i className="fe fe-user me-2"></i>Modifier mon profil
                     </Dropdown.Item>
 
-                    <Dropdown.Item>
+                    <Dropdown.Item onClick={() => {router.push('/'); clearToken()}}>
                         <i className="fe fe-power me-2"></i>Deconnexion
                     </Dropdown.Item>
                 </Dropdown.Menu>

@@ -103,7 +103,7 @@ const NavbarVertical = (props) => {
           <Link href="/" className="navbar-brand">
             {/* <Image src="/images/brand/logo.jpg" style={{width:'35%',height:'20%'}} alt="" /> */}
             <h2>    
-            <span style={{color: '#37d360'}}>Eco</span><span style={{color:'#fff'}}> Marcket</span>
+            <span style={{color: '#37d360'}}>Eco</span><span style={{color:'#fff'}}> Market</span>
             
             </h2>
           </Link>
