@@ -23,6 +23,9 @@ const Billing = () => {
   const[infoProduit, setInfoProduit] = useState({});
   const [matieres, setMatieres] = useState([{ id: 1, name: '' }]);
 
+  const handleGlobalChange = ()=>{
+      
+  }
 
   const addMatiere = () => {
     const newMatiere = { id: matieres.length + 1, name: '' };
