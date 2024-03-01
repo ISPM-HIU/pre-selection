@@ -7,6 +7,7 @@ import publicationRoute from './routes/publications'
 import likesRoute from './routes/likes'
 import commentsRoute from './routes/comments'
 import notificationsRoute from './routes/notifications'
+import validationMaterial from "./routes/validationMaterial"
 import fs from 'fs';
 import path from 'path';
 
@@ -36,5 +37,6 @@ app.use('/api/notifications', notificationsRoute)
 
 // Validation API
 app.use("/api/validation",validtationRoute)
+app.use("/api/validationMaterial", validationMaterial)
 
 app.listen(9090, () => console.log("Api listen on port 9090"))
