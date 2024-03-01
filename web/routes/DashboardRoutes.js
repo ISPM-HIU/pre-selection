@@ -26,48 +26,47 @@ import { v4 as uuid } from 'uuid';
 export const DashboardMenu = [
 	{
 		id: uuid(),
-		title: 'Dashboard',
+		title: 'Accueil',
 		icon: 'home',
 		link: '/'
 	},
 	{
 		id: uuid(),
-		title: 'LAYOUTS & PAGES',
-		grouptitle: true
+		link: '/profile',
+		title: "Profil de l'utilisateur",
+		icon: "user"
 	},
 	{
 		id: uuid(),
-		title: 'Pages',
-		icon: 'layers',
-		children: [
-			{ id: uuid(), link: '/pages/profile', name: 'Acceuil' },
-			{ id: uuid(), link: '/pages/settings', name: 'Settings'},
-			{ id: uuid(), link: '/pages/billing', name: 'Billing' },
-			{ id: uuid(), link: '/pages/pricing', name: 'Pricing'},
-			{ id: uuid(), link: '/404', name: '404 Error' }
-		]
-	},	
+		link: '/materials',
+		title: 'Liste des materiels',
+		icon: "book"
+	},
+	{
+		id: uuid(),
+		link: '/billing',
+		title: 'Publication',
+		icon: "layers"
+	},
+	{
+		id: uuid(),
+		link: '/pricing',
+		title: 'Pricing'
+	},
+	{
+		id: uuid(), link: '/404', name: '404 Error'
+	},
+
 	{
 		id: uuid(),
 		title: 'Authentication',
 		icon: 'lock',
 		children: [
-			{ id: uuid(), link: '/authentication/sign-in', name: 'Sign In' },
-			{ id: uuid(), link: '/authentication/sign-up', name: 'Sign Up' },
-			{ id: uuid(), link: '/authentication/forget-password', name: 'Forget Password'}			
+			{ id: uuid(), link: '/sign-in', name: "S'authentifier" },
+			{ id: uuid(), link: '/sign-up', name: "S'inscrire" },
+			{ id: uuid(), link: '/forget-password', name: 'Mot de passe oublié' }
 		]
 	},
-	{
-		id: uuid(),
-		title: 'Layouts',
-		icon: 'layout',
-		link: '/layouts/layout-vertical'
-	},	
-	{
-		id: uuid(),
-		title: 'UI COMPONENTS',
-		grouptitle: true
-	},	
 	{
 		id: uuid(),
 		title: 'Components',
@@ -98,63 +97,7 @@ export const DashboardMenu = [
 			{ id: uuid(), link: '/components/toasts', name: 'Toasts' },
 			{ id: uuid(), link: '/components/tooltips', name: 'Tooltips' }
 		]
-	},	
-	{
-		id: uuid(),
-		title: 'Menu Level',
-		icon: 'corner-left-down',
-		children: [
-			{ 
-				id: uuid(), 
-				link: '#', 
-				title: 'Two Level',
-				children: [
-					{ id: uuid(), link: '#', name: 'NavItem 1'},
-					{ id: uuid(), link: '#', name: 'NavItem 2' }
-				]
-			},
-			{ 
-				id: uuid(), 
-				link: '#', 
-				title: 'Three Level',
-				children: [
-					{ 
-						id: uuid(), 
-						link: '#', 
-						title: 'NavItem 1',
-						children: [
-							{ id: uuid(), link: '#', name: 'NavChildItem 1'},
-							{ id: uuid(), link: '#', name: 'NavChildItem 2'}
-						]
-					},
-					{ id: uuid(), link: '#', name: 'NavItem 2' }
-				]
-			}
-		]
-	},	
-	{
-		id: uuid(),
-		title: 'Documentation',
-		grouptitle: true
 	},
-	{
-		id: uuid(),
-		title: 'Docs',
-		icon: 'clipboard',
-		link: '/documentation'
-	},
-	{
-		id: uuid(),
-		title: 'Changelog',
-		icon: 'git-pull-request',
-		link: '/changelog'
-	},
-	{
-		id: uuid(),
-		title: 'Download',
-		icon: 'download',
-		link: 'https://codescandy.gumroad.com/l/dashui-nextjs'
-	}
 ];
 
 export default DashboardMenu;

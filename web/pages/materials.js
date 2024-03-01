@@ -5,7 +5,7 @@ import { Container, Row, Button } from 'react-bootstrap';
 import { PageHeading } from 'widgets'
 
 // import sub components
-import { Notifications, DeleteAccount, GeneralSetting, EmailSetting, Preferences, MaterialPerso, ProjectsContributions, MaterialPersoDisable, MaterialSuggestion } from 'sub-components'
+import { MaterialPerso, MaterialPersoDisable, MaterialSuggestion } from 'sub-components'
 
 const Settings = () => {
   return (
