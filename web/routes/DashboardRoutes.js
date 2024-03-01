@@ -32,9 +32,9 @@ export const DashboardMenu = [
 	},
 	{
 		id: uuid(),
-		link: '/profile',
-		title: "Profil de l'utilisateur",
-		icon: "user"
+		link: '/my-post',
+		title: 'Mes publications',
+		icon: "pause"
 	},
 	{
 		id: uuid(),
@@ -47,11 +47,6 @@ export const DashboardMenu = [
 		link: '/materials',
 		title: 'Liste des materiels',
 		icon: "book"
-	},
-	{
-		id: uuid(),
-		link: '/pricing',
-		title: 'Pricing'
 	},
 	{
 		id: uuid(),
