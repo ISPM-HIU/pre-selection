@@ -12,7 +12,7 @@ import QuickMenu from 'layouts/QuickMenu';
 
 const NavbarTop = (props) => {
 	return (
-		<Navbar expanded="lg" className="navbar-classic navbar navbar-expand-lg">
+		<Navbar expanded="lg" style={{background: "transparent", boxShadow: "none"}} className="navbar-classic navbar navbar-expand-lg">
 			<div className='d-flex justify-content-between w-100'>
 				<div className="d-flex align-items-center">
 					<Link
@@ -24,9 +24,9 @@ const NavbarTop = (props) => {
 					</Link>
 					<div className="ms-lg-3 d-none d-md-none d-lg-block">
 						{/* Search Form */}
-						<Form className="d-flex align-items-center">
+						{/* <Form className="d-flex align-items-center">
 							<Form.Control type="search" placeholder="Recherche" />
-						</Form>
+						</Form> */}
 					</div>
 				</div>
 				{/* Quick Menu */}

@@ -1,59 +1,90 @@
 // import node module libraries
-import { Col, Row, Container } from 'react-bootstrap';
+import { Row, Col, Card, Form, Button, Image } from "react-bootstrap";
+import Link from "next/link";
 
-// import widget as custom components
-import { PageHeading } from 'widgets'
+// import authlayout to override default layout
+import AuthLayout from "layouts/AuthLayout";
 
-// import sub components
-import {
-  AboutMe,
-  ActivityFeed,
-  MyTeam,
-  ProfileHeader,
-  ProjectsContributions,
-  RecentFromBlog
-} from 'sub-components'
-import { UserContextProvider } from 'sub-components/profile/context/userContext';
-
-const Profile = () => {
+const SignIn = () => {
   return (
-    <UserContextProvider>
-      <Container fluid className="p-6">
-        {/* Page Heading */}
-        {/* <PageHeading heading="Overview"/> */}
+    <Row className="align-items-center justify-content-center g-0 min-vh-100">
+      <Col xxl={4} lg={6} md={8} xs={12} className="py-8 py-xl-0">
+        {/* Card */}
+        <Card className="smooth-shadow-md">
+          {/* Card body */}
+          <Card.Body className="p-6">
+            <div className="mb-4">
+              <Link href="/">
+                <Image
+                  src="/images/brand/logo/logo-primary.svg"
+                  className="mb-2"
+                  alt=""
+                />
+              </Link>
+              <p className="mb-6">Please enter your user information.</p>
+            </div>
+            {/* Form */}
+            <Form>
+              {/* Username */}
+              <Form.Group className="mb-3" controlId="username">
+                <Form.Label>Username or email</Form.Label>
+                <Form.Control
+                  type="email"
+                  name="username"
+                  placeholder="Enter address here"
+                  required=""
+                />
+              </Form.Group>
 
-        {/* Profile Header  */}
-        <ProfileHeader />
+              {/* Password */}
+              <Form.Group className="mb-3" controlId="password">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  name="password"
+                  placeholder="**************"
+                  required=""
+                />
+              </Form.Group>
 
-        {/* content */}
-        <div className="py-6">
-          <Row>
+              {/* Checkbox */}
+              <div className="d-lg-flex justify-content-between align-items-center mb-4">
+                <Form.Check type="checkbox" id="rememberme">
+                  <Form.Check.Input type="checkbox" />
+                  <Form.Check.Label>Remember me</Form.Check.Label>
+                </Form.Check>
+              </div>
+              <div>
+                {/* Button */}
+                <div className="d-grid">
+                  <Button variant="primary" type="submit">
+                    Sign In
+                  </Button>
+                </div>
+                <div className="d-md-flex justify-content-between mt-4">
+                  <div className="mb-2 mb-md-0">
+                    <Link href="/sign-up" className="fs-5">
+                      Create An Account{" "}
+                    </Link>
+                  </div>
+                  <div>
+                    <Link
+                      href="/forget-password"
+                      className="text-inherit fs-5"
+                    >
+                      Forgot your password?
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </Form>
+          </Card.Body>
+        </Card>
+      </Col>
+    </Row>
+  );
+};
 
-            {/* About Me */}
-            {/* <AboutMe /> */}
+SignIn.Layout = AuthLayout;
 
-            {/* Projects Contributions */}
-            {/* <ProjectsContributions /> */}
-
-            {/* Recent From Blog */}
-            <RecentFromBlog />
-
-            <Col xl={4} lg={12} md={12} xs={12} className="mb-6">
-
-              {/* My Team */}
-              <MyTeam />
-
-              {/* Activity Feed */}
-              <ActivityFeed />
-
-            </Col>
-          </Row>
-        </div>
-
-      </Container>
-    </UserContextProvider>
-
-  )
-}
-
-export default Profile
+export default SignIn;

@@ -4,8 +4,11 @@ import Link from "next/link";
 
 // import authlayout to override default layout
 import AuthLayout from "layouts/AuthLayout";
+import { useState } from "react";
 
 const SignUp = () => {
+  const [data, setData] = useState();
+
   return (
     <Row className="align-items-center justify-content-center g-0 min-vh-100">
       <Col xxl={4} lg={6} md={8} xs={12} className="py-8 py-xl-0">
@@ -89,13 +92,13 @@ const SignUp = () => {
                 </div>
                 <div className="d-md-flex justify-content-between mt-4">
                   <div className="mb-2 mb-md-0">
-                    <Link href="/authentication/sign-in" className="fs-5">
+                    <Link href="/sign-in" className="fs-5">
                       Already member? Login{" "}
                     </Link>
                   </div>
                   <div>
                     <Link
-                      href="/authentication/forget-password"
+                      href="/forget-password"
                       className="text-inherit fs-5"
                     >
                       Forgot your password?
