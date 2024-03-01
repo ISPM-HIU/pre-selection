@@ -1,36 +1,69 @@
 {
     "intents": [
         {
-            "tag": "Frigo Eco",
+            "tag": "Petrole",
             "patterns": [
-                "gaz minime, eau, electricit\u00e9",
-                "Les r\u00e9frig\u00e9rateurs nuisent \u00e0 l'environnement en utilisant de l'\u00e9lectricit\u00e9 non renouvelable. J'ai cr\u00e9er une r\u00e9frig\u00e9rateurs en utilisant les minimum d'energie non renouveleble"
+                "Petrole",
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
             ],
-            "publicationId": 36,
+            "publicationId": 1,
             "responses": [
-                "Les r\u00e9frig\u00e9rateurs nuisent \u00e0 l'environnement en utilisant de l'\u00e9lectricit\u00e9 non renouvelable. J'ai cr\u00e9er une r\u00e9frig\u00e9rateurs en utilisant les minimum d'energie non renouveleble"
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
             ]
         },
         {
-            "tag": "petrole Eco",
+            "tag": "Petrole",
             "patterns": [
-                "eau, electricit\u00e9",
-                "Les petrole nuisent \u00e0 l'environnement en utilisant de l'\u00e9lectricit\u00e9 non renouvelable. J'ai cr\u00e9er une fatana en utilisant les minimum d'energie non renouveleble"
+                "Petrole",
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
             ],
-            "publicationId": 37,
+            "publicationId": 2,
             "responses": [
-                "Les petrole nuisent \u00e0 l'environnement en utilisant de l'\u00e9lectricit\u00e9 non renouvelable. J'ai cr\u00e9er une fatana en utilisant les minimum d'energie non renouveleble"
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
             ]
         },
         {
-            "tag": "voiture Eco",
+            "tag": "Petrole",
             "patterns": [
-                "voiture, electricit\u00e9",
-                "Voiture electricit\u00e9"
+                "Petrole",
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
             ],
-            "publicationId": 43,
+            "publicationId": 3,
             "responses": [
-                "Voiture electricit\u00e9"
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
+            ]
+        },
+        {
+            "tag": "Petrole",
+            "patterns": [
+                "Petrole",
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
+            ],
+            "publicationId": 4,
+            "responses": [
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
+            ]
+        },
+        {
+            "tag": "Petrole",
+            "patterns": [
+                "Petrole",
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
+            ],
+            "publicationId": 5,
+            "responses": [
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
+            ]
+        },
+        {
+            "tag": "Petrole",
+            "patterns": [
+                "Petrole",
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
+            ],
+            "publicationId": 6,
+            "responses": [
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
             ]
         }
     ]

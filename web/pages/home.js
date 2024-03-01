@@ -14,8 +14,23 @@ import {
   RecentFromBlog
 } from 'sub-components'
 import { UserContextProvider } from 'sub-components/profile/context/userContext';
+import useHttps from 'hooks/useHttp';
+import { useEffect, useState } from 'react';
 
 const Profile = () => {
+  const { http } = useHttps();
+  const [posts, setPosts] = useState([]);
+  const fetchPosts = ()=>{
+    http.get('/publications').then(
+      (response)=>{
+        console.log(response.data);
+        setPosts(response.data)
+      }
+    ).catch((err)=>{console.log(err);})
+  }
+  useEffect(()=>{
+    fetchPosts();
+  },[])
   return (
     <UserContextProvider>
       <Container fluid className="p-6">
@@ -36,7 +51,13 @@ const Profile = () => {
             {/* <ProjectsContributions /> */}
 
             {/* Recent From Blog */}
-            <RecentFromBlog />
+            {
+              posts && posts.map((item)=>{
+                return(
+                  <RecentFromBlog key={item.id} userName={item.user.name} description={item.description} like={item.Likes.length} />
+                )
+              })
+            }
 
             <Col xl={4} lg={12} md={12} xs={12} className="mb-6">
 

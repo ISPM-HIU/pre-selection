@@ -1,10 +1,12 @@
 // import node module libraries
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { MoreVertical } from "react-feather";
 import { Col, Row, Card, Form, Dropdown, Image, Button, Modal } from "react-bootstrap";
+import useHttps from "hooks/useHttp";
 
-const RecentFromBlog = () => {
+const RecentFromBlog = (props) => {
+  
   const [showModal, setShowModal] = useState(false);
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
 
@@ -37,9 +39,8 @@ const RecentFromBlog = () => {
       </Dropdown>
     );
   };
-
   return (
-    <Col xl={8} md={12} xs={12} className="mb-6">
+    <Col key={props.key} xl={8} md={12} xs={12} className="mb-6">
       <Card>
         <Card.Body>
           <div className="d-flex justify-content-between mb-5 align-items-center">
@@ -53,7 +54,7 @@ const RecentFromBlog = () => {
                 />
               </div>
               <div className="ms-3">
-                <h5 className="mb-0 fw-bold">Jitu Chauhan</h5>
+                <h5 className="mb-0 fw-bold">{props.userName}</h5>
                 <p className="mb-0">il y a 19 minutes</p>
               </div>
             </div>
@@ -65,10 +66,7 @@ const RecentFromBlog = () => {
           <div className="mb-4">
             {/* text */}
             <p className="mb-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspen
-              disse var ius enim in eros elementum tristique. Duis cursus, mi
-              quis viverra ornare, eros dolor interdum nulla, ut commodo diam
-              libero vitae erat.
+              {props.description}
             </p>
             <Image
               src="/images/blog/blog-img-1.jpg"
@@ -79,7 +77,7 @@ const RecentFromBlog = () => {
           {/* icons */}
           <div className="mb-4">
             <span className="me-1 me-md-4">
-              <i className="fe fe-heart"></i> <span>20 Like</span>
+              <i className="fe fe-heart"></i> <span>{props.like} Like</span>
             </span>
           </div>
           <div className=" border-top py-2 d-flex align-items-center mb-4">

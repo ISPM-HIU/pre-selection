@@ -4,7 +4,7 @@ const send_to_model =  async (allPublication: any) => {
     let data = {
         "intents": [] as any
     }
-    const url = "http://localhost:8888/load-to-model";
+    const url = "http://127.0.0.1:8888/load-to-model";
     for await (let publication of allPublication) {
         let pub_data =  {
             "tag": publication.product_name,

@@ -5,11 +5,10 @@ import { Col, Row, Container, Card, Image } from 'react-bootstrap';
 import { Header, ProfileHeader } from "sub-components";
 import { PageHeading } from "widgets";
 
-export const Posts = () => {
-    
+export const Posts = (props) => {
     return (
         <>
-            <Col xl={8} md={12} xs={12} className="mb-6">
+            <Col key={props.key} xl={8} md={12} xs={12} className="mb-6">
                 <Card>
                     <Card.Body>
                         <div className="d-flex justify-content-between mb-5 align-items-center">
@@ -23,7 +22,7 @@ export const Posts = () => {
                                     />
                                 </div>
                                 <div className="ms-3">
-                                    <h5 className="mb-0 fw-bold">Jitu Chauhan</h5>
+                                    <h5 className="mb-0 fw-bold">{props.userName}</h5>
                                     <p className="mb-0">il y a 19 minutes</p>
                                 </div>
                             </div>
@@ -34,10 +33,7 @@ export const Posts = () => {
                         <div className="mb-4">
                             {/* text */}
                             <p className="mb-4">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspen
-                                disse var ius enim in eros elementum tristique. Duis cursus, mi
-                                quis viverra ornare, eros dolor interdum nulla, ut commodo diam
-                                libero vitae erat.
+                                {props.description}
                             </p>
                             <Image
                                 src="/images/blog/blog-img-1.jpg"
@@ -63,31 +59,45 @@ export const Posts = () => {
 }
 
 export default function Page() {
-    const {http} = useHttps();
+    const { http } = useHttps();
     const [user, setUser] = useState(null);
-    const fetchUser = ()=>{
+    const [posts, setPosts] = useState([])
+    const fetchUser = () => {
         http.get("/users/1").then(
-            (response)=>{
+            (response) => {
                 console.log(response.data);
                 setUser(response.data)
             }
-        ).catch((err)=>{console.log(err);})
+        ).catch((err) => { console.log(err); })
     }
-    useEffect(()=>{
+    const fetchPosts = async () => {
+        await fetchUser();
+        http.get(`/publications/for-user/${1}`).then(
+            async (response) => {
+                console.log(response);
+                await response.data.map((item) => {
+                    setPosts(prevPosts => [...prevPosts, <Posts key={item.id} userName={item.userId} description={item.description} />]);
+                })
+
+            }
+        ).catch((err) => { console.log(err) })
+    }
+    useEffect(() => {
         fetchUser();
-    },[])
-    const [posts, setPosts] = useState([<Posts />])
+        fetchPosts();
+    }, [])
+
     return (
         <>
             <Container fluid className="p-6">
                 <PageHeading heading="Mon profile" />
-                {user && 
-                    <Header name={user.name} email={user.email} phone={user.phone}/>
+                {user &&
+                    <Header name={user.name} email={user.email} phone={user.phone} />
                 }
-                
                 <p></p>
-                
-
+                <center>
+                    {posts}
+                </center>
             </Container>
         </>
     )
