@@ -12,26 +12,27 @@ import {
 import { PageHeading } from 'widgets'
 import { DropFiles } from "widgets";
 
-const produit = {
-  id: "",
-  nomProd: "",
-  description: "",
-  listeMatieres: [{ id: "", nomMatiere: "" }],
-  img: ""
-}
-
 import { useState } from 'react';
+import useHttps from 'hooks/useHttp';
+import { getToken } from 'services/token';
+import { useRouter } from 'next/router';
 
 const Billing = () => {
   const [data, setData] = useState();
-  const [infoProduit, setInfoProduit] = useState({});
   const [matieres, setMatieres] = useState([{ id: 1, name: '' }]);
+  const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [validation, setValidation] = useState(null);
+  const { http } = useHttps();
+  const token = getToken();
+  const router = useRouter();
 
   const handleChange = (e) => {
     setData({
       ...data,
       [e.target.name]:e.target.value
     })
+    console.log(e.target.value)
   }
 
   const addMatiere = () => {
@@ -50,6 +51,57 @@ const Billing = () => {
     setMatieres(updatedMatieres);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    let formData = new FormData()
+    if(image)
+      formData.append("image", image)
+    
+    formData.append("product_name", data.product_name);
+    formData.append("description", data.description);
+    formData.append("userId", token.user.id);
+    console.log(formData)
+    let mat_name = []
+    matieres.forEach(mat => {
+      mat_name.push(mat.name)
+    })
+    const result = mat_name.join(", ");
+    formData.append("products", result);
+    try {
+      let validation = await http.post("/validation", {prompt: result})
+      if(validation.data.validation == "Success") {
+        setValidation(true)
+        let response = await http.post("/publications", formData)
+        if(response) {
+          setLoading(false)
+          router.push("/home")
+        }
+      }
+      else {
+        setValidation(false)
+        setLoading(false)
+      }
+    } catch (error) {
+      setLoading(false)
+      console.log(error)
+    }
+  } 
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+        setImage(event.target.result);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }
+
   return (
     <Container fluid className="p-6">
       {/* Page Heading */}
@@ -61,7 +113,7 @@ const Billing = () => {
               <Card.Body className="p-5">
                 <div>
                   {/* border */}
-                  <Form>
+                  <Form onSubmit={handleSubmit}>
                     {/* row */}
                     <Row className="mb-3">
                       <label
@@ -92,6 +144,8 @@ const Billing = () => {
                         <Form.Control 
                           as="textarea" 
                           name="description"
+                          onChange={handleChange}
+                          required
                           rows={3}
                           type="textarea"
                           placeholder="Entrez sa description"
@@ -111,12 +165,13 @@ const Billing = () => {
                               {matieres.map((m, index) => (
 
                                 <ListGroup.Item key={m.id}>
-                                  <Row >
+                                  <Row>
                                     <Col className='col-9'>
                                       <Form.Control type="text"
                                         placeholder="Ajouter une matière que vous avez utilisée"
                                         value={m.name}
-                                        onChange={(e) => handleInputChange(index, e)} required
+                                        required
+                                        onChange={(e) => handleInputChange(index, e)}
                                       />
                                     </Col>
                                     <Col className='d-flex justify-content-end py-2'>
@@ -127,6 +182,8 @@ const Billing = () => {
 
                               ))}
                             </ListGroup>
+                            {validation == false && (<p style={{color: "red"}}>Les matières que vous avez utilisées dépassent la moyenne écologique. 
+                            Elles peuvent encore nuire à la pollution à cause de l'énergie.</p>)}
                             <Button variant="primary" className="mt-2" onClick={addMatiere}>Ajouter une autre matière</Button>
 
                             {/* end of code */}
@@ -141,13 +198,14 @@ const Billing = () => {
                       </Col>
                       <Col md={8}>
                         {/* dropzone input */}
-                        <Form.Control type="file" />
+                        <Form.Control type="file" required onChange={handleImageChange} />
+                        {image && <img src={image} className='mt-3' alt="uploaded" width={500} />}
                       </Col>
                     </Row>
                     <Row>
                       <Col md={8} xs={12}>
-                        <Button variant="success" className="me-4 mb-2 ms-0">
-                          Valider
+                        <Button disabled={loading} type='submit' variant="success" className="me-4 mb-2 ms-0">
+                          {loading ? (validation == true ? "Publication..." : "En attente de validation...") : "Valider"}
                         </Button>
                       </Col>
                     </Row>

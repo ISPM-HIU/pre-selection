@@ -51,14 +51,16 @@ const Profile = () => {
             {/* <ProjectsContributions /> */}
 
             {/* Recent From Blog */}
-            {
-              posts && posts.map((item)=>{
-                return(
-                  <RecentFromBlog key={item.id} userName={item.user.name} description={item.description} like={item.Likes.length} />
-                )
-              })
-            }
-
+            <Col xl={8} md={12} xs={12} >
+                {
+                  posts && posts.map((item)=>{
+                    return(
+                      <RecentFromBlog key={item.id} props={item} />
+                    )
+                  })
+                }
+            </Col>
+          
             <Col xl={4} lg={12} md={12} xs={12} className="mb-6">
 
               {/* My Team */}

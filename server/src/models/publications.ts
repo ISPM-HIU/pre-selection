@@ -10,8 +10,14 @@ const model = {
                 Comments:  {
                     include: {
                         user: true
+                    },
+                    orderBy: {
+                        id: "desc"
                     }
                 }
+            },
+            orderBy: {
+                id: "desc"
             }
         })
         return result
@@ -25,6 +31,9 @@ const model = {
                 Comments:  {
                     include: {
                         user: true
+                    },
+                    orderBy: {
+                        id: "desc"
                     }
                 },
             }
@@ -39,6 +48,9 @@ const model = {
                 user: true,
                 Likes: true,
                 Comments: true
+            },
+            orderBy: {
+                id: "desc"
             }
         })
         
