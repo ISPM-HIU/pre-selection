@@ -12,20 +12,16 @@ import {
 import { PageHeading } from 'widgets'
 import { DropFiles } from "widgets";
 
-const produit = {
-  id: "",
-  nomProd: "",
-  description: "",
-  listeMatieres: [{ id: "", nomMatiere: "" }],
-  img: ""
-}
-
 import { useState } from 'react';
+import useHttps from 'hooks/useHttp';
+import { getToken } from 'services/token';
 
 const Billing = () => {
   const [data, setData] = useState();
-  const [infoProduit, setInfoProduit] = useState({});
   const [matieres, setMatieres] = useState([{ id: 1, name: '' }]);
+  const [image, setImage] = useState(null);
+  const { http } = useHttps();
+  const token = getToken();
 
   const handleChange = (e) => {
     setData({
@@ -50,6 +46,41 @@ const Billing = () => {
     setMatieres(updatedMatieres);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    let formData = new FormData()
+    if(image)
+      formData.append("image", image)
+    
+    formData.append("product_name", data.product_name);
+    formData.append("description", data.description);
+    formData.append("userId", token.user.id);
+    const result = matieres.join(",");
+    formData.append("products", result);
+    try {
+      let response = await http.post("/publications", formData)
+      if(response) {
+        console.log(response.data)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  } 
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+        setImage(event.target.result);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }
+
   return (
     <Container fluid className="p-6">
       {/* Page Heading */}
@@ -61,7 +92,7 @@ const Billing = () => {
               <Card.Body className="p-5">
                 <div>
                   {/* border */}
-                  <Form>
+                  <Form onSubmit={handleSubmit}>
                     {/* row */}
                     <Row className="mb-3">
                       <label
@@ -92,6 +123,7 @@ const Billing = () => {
                         <Form.Control 
                           as="textarea" 
                           name="description"
+                          required
                           rows={3}
                           type="textarea"
                           placeholder="Entrez sa description"
@@ -116,7 +148,8 @@ const Billing = () => {
                                       <Form.Control type="text"
                                         placeholder="Ajouter une matière que vous avez utilisée"
                                         value={m.name}
-                                        onChange={(e) => handleInputChange(index, e)} required
+                                        required
+                                        onChange={(e) => handleInputChange(index, e)}
                                       />
                                     </Col>
                                     <Col className='d-flex justify-content-end py-2'>
@@ -141,12 +174,13 @@ const Billing = () => {
                       </Col>
                       <Col md={8}>
                         {/* dropzone input */}
-                        <Form.Control type="file" />
+                        <Form.Control type="file" required onChange={handleImageChange} />
+                        {image && <img src={image} className='mt-3' alt="uploaded" width={500} />}
                       </Col>
                     </Row>
                     <Row>
                       <Col md={8} xs={12}>
-                        <Button variant="success" className="me-4 mb-2 ms-0">
+                        <Button type='submit' variant="success" className="me-4 mb-2 ms-0">
                           Valider
                         </Button>
                       </Col>
