@@ -4,12 +4,14 @@ import Link from "next/link";
 import { MoreVertical } from "react-feather";
 import { Col, Row, Card, Form, Dropdown, Image, Button, Modal } from "react-bootstrap";
 import useHttps from "hooks/useHttp";
+import moment from 'moment';
+import 'moment/locale/fr'; 
 
-const RecentFromBlog = (props) => {
-  
+const RecentFromBlog = ({ props }) => {
   const [showModal, setShowModal] = useState(false);
+  const timeFromNow = moment(props.createdAt).fromNow();
+  console.log(props)
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-
     <Link
       href=""
       ref={ref}
@@ -39,9 +41,17 @@ const RecentFromBlog = (props) => {
       </Dropdown>
     );
   };
+
+  const addLike = () => { 
+    try {
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
-    <Col key={props.key} xl={8} md={12} xs={12} className="mb-6">
-      <Card>
+    <>
+      <Card className="mb-6">
         <Card.Body>
           <div className="d-flex justify-content-between mb-5 align-items-center">
             {/* avatar */}
@@ -54,8 +64,8 @@ const RecentFromBlog = (props) => {
                 />
               </div>
               <div className="ms-3">
-                <h5 className="mb-0 fw-bold">{props.userName}</h5>
-                <p className="mb-0">il y a 19 minutes</p>
+                <h5 className="mb-0 fw-bold">{props.user.name}</h5>
+                <p className="mb-0">{timeFromNow}</p>
               </div>
             </div>
             <div>
@@ -77,7 +87,7 @@ const RecentFromBlog = (props) => {
           {/* icons */}
           <div className="mb-4">
             <span className="me-1 me-md-4">
-              <i className="fe fe-heart"></i> <span>{props.like} Like</span>
+              <i className="fe fe-heart"></i> <span>{props.Likes.length || 0} Like</span>
             </span>
           </div>
           <div className=" border-top py-2 d-flex align-items-center mb-4">
@@ -143,7 +153,7 @@ const RecentFromBlog = (props) => {
         </Modal.Footer>
 
       </Modal>
-    </Col>
+    </>
   );
 };
 

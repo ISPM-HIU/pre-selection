@@ -1,4 +1,5 @@
 
+import axios from 'axios';
 import { useState } from 'react';
 import { Container, Row, Col, Card,Image, Tab, Form, Dropdown, Button } from 'react-bootstrap';
 import { PageHeading } from 'widgets'; 
@@ -7,6 +8,8 @@ import { PageHeading } from 'widgets';
 const ChatBot = () => {
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState('');
+  const [botResults, setBotResults] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleMessageChange = (e) => {
     setMessage(e.target.value);
@@ -19,6 +22,50 @@ const ChatBot = () => {
     }
   };
 
+  const getOpenAiResponse = async (e) => {
+    e.preventDefault()
+    setLoading(true);
+    setBotResults(null);
+    console.log(message)
+    const body = {
+      model: "gpt-3.5-turbo",
+      messages: [
+        {
+          role: "system",
+          content: "You are an assistant who gives advice in order to transform these products through ecological projects.",
+        },
+        {
+          role: "user",
+          content: message,
+        },
+      ],
+    };
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "Bearer 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",
+      },
+    };
+    try {
+      let response = await axios.post(
+        "https://api.openai.com/v1/chat/completions",
+        body,
+        config
+      );
+
+      if (response) {
+        let bot_response = response.data.choices[0].message.content;
+        console.log(bot_response);
+        setLoading(false);
+        setBotResults(bot_response);
+      }
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
+    }
+  };
+
   return (
     <Container fluid className="p-6">
         <i className="bi bi-chat-square"></i>
@@ -28,26 +75,6 @@ const ChatBot = () => {
           <Tab.Container defaultActiveKey="design">
             <Card>
               <Card.Body>
-                <div className="d-flex justify-content-between mb-5 align-items-center">
-                <div className="d-flex align-items-center">
-                    <div>
-                        <Image
-                        src="/images/avatar/avatar-1.jpg"
-                        alt=""
-                        className="avatar avatar-md rounded-circle"
-                        />
-                    </div>
-                    <div className="ms-3">
-                        <h5 className="mb-0 fw-bold">Jitu Chauhan</h5>
-                        <p className="mb-0">il y a 19 minutes</p>
-                    </div>
-                    </div>
-                    <div>
-                    {/* dropdown */}
-                    <a class="text-muted text-primary-hover"><svg xmlns="http://www.w3.org/2000/svg" width="15px" height="15px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg></a>
-                    </div>
-                </div>
-                <div class=" border-top py-2 d-flex align-items-center mb-4"></div>
 
                 <div style={{ maxHeight: '300px', overflowY: 'scroll' }}>
                   {messages.map((msg, index) => (
@@ -74,28 +101,29 @@ const ChatBot = () => {
                   ))}
                 </div>
         
-                <Form onSubmit={(e) => { e.preventDefault(); sendMessage(); }}>
+                <Form onSubmit={getOpenAiResponse}>
                     <Form.Group className='py-3' controlId="chatMessage">
                         <Row>
                         <Col xs={10}>
                             <Form.Control
-                            type="text"
-                            placeholder="Entrez votre message"
-                            value={message}
-                            onChange={handleMessageChange}
+                              type="text"
+                              placeholder="Entrez les matériels que vous utilisez"
+                              value={message}
+                              onChange={handleMessageChange}
+                              required
                             />
                         </Col>
                         <Col xs={2} className="">
-                            <Button variant="primary" type="submit">
-                            Envoyer
+                            <span className='px-5'>
+                              <i class="fe fe-mic-off"></i>
+                            </span>
+                            <Button disabled={loading} variant="primary" type="submit">
+                                {loading ? "Chargement..." : "Envoyer"}
                                 <span className='px-2'>
                                     <i class="fe fe-send"></i>
                                 </span>
 
                             </Button>
-                            <span className='px-1'>
-                            <i class="fe fe-paperclip"></i>
-                            </span>
 
                         </Col>
                         </Row>

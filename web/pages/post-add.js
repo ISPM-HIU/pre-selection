@@ -15,6 +15,7 @@ import { DropFiles } from "widgets";
 import { useState } from 'react';
 import useHttps from 'hooks/useHttp';
 import { getToken } from 'services/token';
+import { useRouter } from 'next/router';
 
 const Billing = () => {
   const [data, setData] = useState();
@@ -24,12 +25,14 @@ const Billing = () => {
   const [validation, setValidation] = useState(null);
   const { http } = useHttps();
   const token = getToken();
+  const router = useRouter();
 
   const handleChange = (e) => {
     setData({
       ...data,
       [e.target.name]:e.target.value
     })
+    console.log(e.target.value)
   }
 
   const addMatiere = () => {
@@ -58,6 +61,7 @@ const Billing = () => {
     formData.append("product_name", data.product_name);
     formData.append("description", data.description);
     formData.append("userId", token.user.id);
+    console.log(formData)
     let mat_name = []
     matieres.forEach(mat => {
       mat_name.push(mat.name)
@@ -66,13 +70,12 @@ const Billing = () => {
     formData.append("products", result);
     try {
       let validation = await http.post("/validation", {prompt: result})
-      console.group(validation.data)
       if(validation.data.validation == "Success") {
         setValidation(true)
         let response = await http.post("/publications", formData)
         if(response) {
-          console.log(response.data)
           setLoading(false)
+          router.push("/home")
         }
       }
       else {
@@ -141,6 +144,7 @@ const Billing = () => {
                         <Form.Control 
                           as="textarea" 
                           name="description"
+                          onChange={handleChange}
                           required
                           rows={3}
                           type="textarea"
@@ -178,7 +182,7 @@ const Billing = () => {
 
                               ))}
                             </ListGroup>
-                            {loading && !validation && (<p style={{color: "red"}}>Les matières que vous avez utilisées dépassent la moyenne écologique. 
+                            {validation == false && (<p style={{color: "red"}}>Les matières que vous avez utilisées dépassent la moyenne écologique. 
                             Elles peuvent encore nuire à la pollution à cause de l'énergie.</p>)}
                             <Button variant="primary" className="mt-2" onClick={addMatiere}>Ajouter une autre matière</Button>
 

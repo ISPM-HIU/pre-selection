@@ -6,6 +6,9 @@ const model = {
         let result = await prisma.notifications.findMany({
             where: {
                 id: pubId
+            },
+            orderBy: {
+                id: "desc"
             }
         })
         return result
