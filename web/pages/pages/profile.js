@@ -18,7 +18,7 @@ const Profile = () => {
   return (
     <Container fluid className="p-6">
       {/* Page Heading */}
-      <PageHeading heading="Overview"/>
+      {/* <PageHeading heading="Overview"/> */}
 
       {/* Profile Header  */}
       <ProfileHeader />
@@ -28,15 +28,15 @@ const Profile = () => {
         <Row>
 
           {/* About Me */}
-          <AboutMe />
+          {/* <AboutMe /> */}
 
           {/* Projects Contributions */}
-          <ProjectsContributions />
+          {/* <ProjectsContributions /> */}
 
           {/* Recent From Blog */}
           <RecentFromBlog />
 
-          <Col xl={6} lg={12} md={12} xs={12} className="mb-6">
+          <Col xl={4} lg={12} md={12} xs={12} className="mb-6">
 
             {/* My Team */}
             <MyTeam />
