@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: hiu_db
+      MYSQL_USER: hiu_ISPM
+      MYSQL_PASSWORD: hiu_dev_2024
+    ports:
+      - "3300:3300"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "98:80"
+    environment:
+      PMA_USER: hiu_ISPM
+      PMA_PASSWORD: hiu_dev_2024
+
+volumes:
+  db_data:
