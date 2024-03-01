@@ -1,10 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import useHttps from "hooks/useHttp";
+import React, { useEffect, useState } from "react";
 import { Col, Row, Container, Card, Image } from 'react-bootstrap';
 import { Header, ProfileHeader } from "sub-components";
 import { PageHeading } from "widgets";
 
 export const Posts = () => {
+    
     return (
         <>
             <Col xl={8} md={12} xs={12} className="mb-6">
@@ -61,16 +63,30 @@ export const Posts = () => {
 }
 
 export default function Page() {
+    const {http} = useHttps();
+    const [user, setUser] = useState(null);
+    const fetchUser = ()=>{
+        http.get("/users/1").then(
+            (response)=>{
+                console.log(response.data);
+                setUser(response.data)
+            }
+        ).catch((err)=>{console.log(err);})
+    }
+    useEffect(()=>{
+        fetchUser();
+    },[])
     const [posts, setPosts] = useState([<Posts />])
     return (
         <>
             <Container fluid className="p-6">
                 <PageHeading heading="Mon profile" />
-                <Header />
+                {user && 
+                    <Header name={user.name} email={user.email} phone={user.phone}/>
+                }
+                
                 <p></p>
-                <center>
-                    {posts}
-                </center>
+                
 
             </Container>
         </>

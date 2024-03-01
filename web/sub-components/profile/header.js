@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { Col, Row, Image } from "react-bootstrap";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <Row className="align-items-center">
       <Col xl={12} lg={12} md={12} xs={12}>
@@ -43,7 +43,7 @@ const Header = () => {
               {/* text */}
               <div className="lh-1">
                 <h2 className="mb-0">
-                  Jitu Chauhan
+                  {props.name}
                   <Link
                     href="#!"
                     className="text-decoration-none"
@@ -53,7 +53,7 @@ const Header = () => {
                     data-original-title="Beginner"
                   ></Link>
                 </h2>
-                <p className="mb-0 d-block">@imjituchauhan</p>
+                <p className="mb-0 d-block">{props.email} / {props.phone}</p>
               </div>
             </div>
             <div>
