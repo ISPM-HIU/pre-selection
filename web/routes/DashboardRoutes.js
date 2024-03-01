@@ -40,7 +40,7 @@ export const DashboardMenu = [
 		title: 'Pages',
 		icon: 'layers',
 		children: [
-			{ id: uuid(), link: '/pages/profile', name: 'Profile' },
+			{ id: uuid(), link: '/pages/profile', name: 'Acceuil' },
 			{ id: uuid(), link: '/pages/settings', name: 'Settings'},
 			{ id: uuid(), link: '/pages/billing', name: 'Billing' },
 			{ id: uuid(), link: '/pages/pricing', name: 'Pricing'},

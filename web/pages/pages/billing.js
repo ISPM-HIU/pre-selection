@@ -10,13 +10,13 @@ import { Row, Col, Container,Card,
 // import widget as custom components
 import { PageHeading } from 'widgets'
 import { DropFiles } from "widgets";
-produit = {
-  id : "",
-  nomProd : "",
-  description: "",
-  listeMatieres : [{id : "",nomMatiere : ""}],
-  img : ""
-}
+// produit = {
+//   id : "",
+//   nomProd : "",
+//   description: "",
+//   listeMatieres : [{id : "",nomMatiere : ""}],
+//   img : ""
+// }
 
 import { useState } from 'react';
 const Billing = () => {
