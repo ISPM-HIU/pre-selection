@@ -9,6 +9,9 @@ import TasksPerformance from 'sub-components/dashboard/TasksPerformance';
 import Teams from 'sub-components/dashboard/Teams';
 
 // sub components for /pages/profile
+import MaterialSuggestion from './profile/MaterialSuggestion';
+import MaterialPersoDisable from './profile/MaterialPersoDisable';
+import MaterialPerso from './profile/MaterialPerso';
 import AboutMe from 'sub-components/profile/AboutMe';
 import ActivityFeed from 'sub-components/profile/ActivityFeed';
 import MyTeam from 'sub-components/profile/MyTeam';
@@ -34,6 +37,9 @@ export {
    Teams,
    
    AboutMe,
+   MaterialSuggestion,
+   MaterialPersoDisable,
+   MaterialPerso,
    ActivityFeed,
    MyTeam,
    ProfileHeader,

@@ -1,35 +1,38 @@
 // import node module libraries
-import { Container } from 'react-bootstrap';
+import { Container, Row, Button } from 'react-bootstrap';
 
 // import widget as custom components
 import { PageHeading } from 'widgets'
 
 // import sub components
-import { Notifications, DeleteAccount, GeneralSetting, EmailSetting, Preferences } from 'sub-components'
+import { Notifications, DeleteAccount, GeneralSetting, EmailSetting, Preferences, MaterialPerso, ProjectsContributions, MaterialPersoDisable, MaterialSuggestion } from 'sub-components'
 
 const Settings = () => {
   return (
-    <Container fluid className="p-6">
+    <>
+      <Container fluid className="p-6">
 
-      {/* Page Heading */}
-      <PageHeading heading="General" />
+        {/* Page Heading */}
+        <PageHeading heading="Vos matériels" />
+        <div className="py-6">
+          <Row>
+            <MaterialPerso />
+            <MaterialPersoDisable />
+          </Row>
+          <Row>
+          <Button style={{width:'50%', margin:'auto'}} variant="primary">Valider</Button>
 
-      {/* General Settings */}
-      <GeneralSetting />
+          </Row>
+          <Row>
+            <MaterialSuggestion />
+          </Row>
+        </div>
+      </Container>
+      
+      
+      
+    </>
 
-      {/* Email Settings */}
-      <EmailSetting />
-
-      {/* Settings for Preferences */}
-      <Preferences />
-
-      {/* Settings for Notifications */}
-      <Notifications />
-
-      {/* Delete Your Account */}
-      <DeleteAccount />
-
-    </Container>
   )
 }
 
