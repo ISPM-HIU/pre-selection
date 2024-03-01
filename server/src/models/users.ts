@@ -43,20 +43,21 @@ const model = {
 
         return result
     },
-    create: async (name:string, last_name:string, email:string, password:string) => {
+    create: async (name:string, last_name:string, email:string, password:string, phone:string) => {
 
         const result = await prisma.users.create({
             data: {
                 name,
                 last_name,
                 email, 
-                password
+                password,
+                phone
               },
         })
 
         return result
     },
-    update:  async (name:string, last_name:string, email:string, id:number) => {
+    update:  async (name:string, last_name:string, email:string, id:number, phone:string) => {
 
         const result = await prisma.users.update({
             where: { id: Number(id) },
@@ -64,6 +65,7 @@ const model = {
                 name,
                 last_name,
                 email, 
+                phone
             },
         })
 

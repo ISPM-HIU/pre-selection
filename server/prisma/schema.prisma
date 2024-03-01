@@ -8,10 +8,59 @@ datasource db {
 }
 
 model Users {
-  id          Int         @id @default(autoincrement())
-  createdAt   DateTime    @default(now())
-  name        String      @db.VarChar(255)
-  last_name   String?     @db.VarChar(255)
-  email       String      @unique
-  password    String? 
+  id            Int             @id @default(autoincrement())
+  createdAt     DateTime        @default(now())
+  name          String          @db.VarChar(255)
+  phone         String?         @db.VarChar(255)
+  last_name     String?         @db.VarChar(255)
+  email         String          @unique
+  password      String?
+  publications  Publications[]
+  Notifications Notifications[]
+  Likes         Likes[]
+  Comments      Comments[]
+}
+
+model Publications {
+  id            Int             @id @default(autoincrement())
+  createdAt     DateTime        @default(now())
+  product_name  String?         @db.VarChar(255)
+  description   String?         @db.VarChar(255)
+  products      String?         @db.VarChar(255)
+  image         String?         @db.VarChar(255)
+  type          String?         @db.VarChar(255) // petrole, gaz, etc...
+  user          Users?          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        Int
+  Notifications Notifications[]
+  Likes         Likes[]
+  Comments      Comments[]
+}
+
+model Likes {
+  id            Int           @id @default(autoincrement())
+  createdAt     DateTime      @default(now())
+  user          Users?        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        Int
+  publication   Publications? @relation(fields: [publicationId], references: [id], onDelete: Cascade)
+  publicationId Int
+}
+
+model Comments {
+  id            Int           @id @default(autoincrement())
+  createdAt     DateTime      @default(now())
+  text          String?       @db.VarChar(255)
+  user          Users?        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        Int
+  publication   Publications? @relation(fields: [publicationId], references: [id], onDelete: Cascade)
+  publicationId Int
+}
+
+model Notifications {
+  id            Int           @id @default(autoincrement())
+  createdAt     DateTime      @default(now())
+  type          String?       @db.VarChar(255) // achat, investissement
+  publication   Publications? @relation(fields: [publicationId], references: [id], onDelete: Cascade)
+  publicationId Int
+  user          Users?        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        Int
 }
