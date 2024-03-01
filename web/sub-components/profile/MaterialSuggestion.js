@@ -1,0 +1,53 @@
+// import node module libraries
+"use client";
+import Link from "next/link";
+import { useState } from "react";
+import { Card, Image, Container } from "react-bootstrap";
+
+const ListeMaterial = (props)=>{
+    return(
+        <>
+        <div className="d-flex justify-content-between align-items-center mb-4" key={props.key}>
+                        <div className="d-flex align-items-center">
+                            <div>
+                                <Image
+                                    src="/images/avatar/avatar-1.jpg"
+                                    className="rounded-circle avatar-md"
+                                    alt=""
+                                />
+                            </div>
+                            <div className="ms-3 ">
+                                <h5 className="mb-1">Titre</h5>
+                                <p className="text-muted mb-0 fs-5 text-muted">
+                                    Description
+                                </p>
+                            </div>
+                        </div>
+                        <div>
+                            <Link href="#" className="text-muted text-primary-hover me-3">
+                                <i className="fa fa-info fs-4"></i>
+                            </Link>
+                        </div>
+                    </div>
+        </>
+    )
+}
+
+const MaterialSuggestion = () => {
+    const [list, setList] = useState([<ListeMaterial key={0}/>])
+    return (
+        <Container fluid className="p-6">
+            <Card className="mb-4">
+                <Card.Body>
+                    <Card.Title as="h4">Materiel suggéré</Card.Title>
+                    {
+                        list
+                    }
+                </Card.Body>
+            </Card>
+        </Container>
+
+    );
+};
+
+export default MaterialSuggestion;

@@ -2,8 +2,16 @@
 import { PlusCircle } from "react-feather";
 import Link from "next/link";
 import { Col, Row, Image, Button } from "react-bootstrap";
+import { useContext, useState } from "react";
 
 const ProfileHeader = () => {
+  const [stateRoute, setStateRoute] = useState({
+    info: true,
+    products: false,
+    vendu: false,
+    invest: false
+  })
+
   return (
     <Row className="align-items-center">
       <Col xl={12} lg={12} md={12} xs={12}>
