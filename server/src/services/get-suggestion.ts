@@ -2,7 +2,7 @@ import axios from "axios";
 
 const getSuggestion =  async (materiel: any) => {
     return new Promise(async (resolve, reject) => {
-        const url = "http://localhost:8888/chatbot";
+        const url = "http://127.0.0.1:8888/chatbot";
         console.log({question: materiel})
         try {
             let response = await axios.post(url, {"question": materiel}, {

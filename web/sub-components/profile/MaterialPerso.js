@@ -17,10 +17,10 @@ const InputComponent = (props) => {
     )
 }
 
-const MaterialPerso = () => {
+const MaterialPerso = (props) => {
     const [listMaterial, setListMaterial] = useState([]);
     const [inputValue,setInputValue] = useState("");
-
+    let material = []
     const deleteInput = (e) => {
         const id = e.target.id;
         setInputList(inputList.filter((item, index) => index != id));
@@ -32,10 +32,12 @@ const MaterialPerso = () => {
 
     const addInput = (e) => {
         setListMaterial(value=>{
-            var material = value.slice()
+            material = value.slice()
             material.push(inputValue)
+            props.list(material)
             return material
         })
+        
         setInputValue("")
     }
 
