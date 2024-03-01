@@ -2,7 +2,7 @@
 import { PlusCircle } from "react-feather";
 import Link from "next/link";
 import { useContext, useState } from "react";
-import { Col, Row, Image,Button } from "react-bootstrap";
+import { Col, Row, Image, Button } from "react-bootstrap";
 import { UserContext } from "./context/userContext";
 
 const ProfileHeader = () => {
@@ -26,57 +26,59 @@ const ProfileHeader = () => {
           }}
         ></div>
         <div className="bg-white rounded-bottom smooth-shadow-sm ">
-        <div className="d-flex align-items-center justify-content-between pt-2 pb-2 px-4">
-          <div>
+          <div className="d-flex align-items-center justify-content-between pt-2 pb-2 px-4">
+            <div>
+            </div>
           </div>
-        </div>
           <div className="row">
 
-              {/* nav */}
-              <div className="col-7">
-                <ul className="nav nav-lt-tab px-4" id="pills-tab" role="tablist">
-                  <li className="nav-item">
-                    <Link className="nav-link active" href="#">
-                      Overview
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" href="#">
-                      Project
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" href="#">
-                      Files
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" href="#">
-                      Teams
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" href="#">
-                      Followers
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" href="#">
-                      Activity
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-              <div className="col-5 d-flex justify-content-end">
-                <ul className="nav px-4" >
-                    <li className="nav-item">
-                      <Button >
-                          <PlusCircle className="me-2" /> Ajouter une nouvelle publication
-                      </Button>
-                      
-                    </li>
-                </ul>
-              </div>
+            {/* nav */}
+            <div className="col-7">
+              <ul className="nav nav-lt-tab px-4" id="pills-tab" role="tablist">
+                <li className="nav-item">
+                  <Link className="nav-link active" href="#">
+                    Overview
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" href="#">
+                    Project
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" href="#">
+                    Files
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" href="#">
+                    Teams
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" href="#">
+                    Followers
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" href="#">
+                    Activity
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="col-5 d-flex justify-content-end">
+              <ul className="nav px-4" >
+                <li className="nav-item">
+                  <Link href={"/post-add"}>
+                    <Button >
+                      <PlusCircle className="me-2" /> Ajouter une nouvelle publication
+                    </Button>
+                  </Link>
+
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </Col>
