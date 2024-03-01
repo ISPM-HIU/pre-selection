@@ -1,0 +1,94 @@
+export const materials = {
+    "petrole":{
+        descWord:[
+            "Pétrôle",
+            "pétrôle",
+            "petrole",
+            "pétrole",
+            "petrôle",
+            "Petrole",
+            "Pétrole",
+            "Petrôle",
+        ]
+    },
+    "bois":{
+        descWord:[
+            "Bois",
+            "bois",
+            "acajou",
+            "Acajou"
+        ]
+    },
+    "verre":{
+        descWord:[
+            "Verre",
+            "verre"
+        ]
+    },
+    "plastique":{
+        descWord:[
+            "Plastique",
+            "plastique",
+        ]
+    },
+    "pierre":{
+        descWord:[
+            "Pierre",
+            "pierre",
+            "basalte",
+            "Basalte",
+            "Granite",
+            "granite"
+        ]
+    },
+    "organique":{
+        descWord:[
+            "Matière organique",
+            "matière organique",
+            "Matiere organique",
+            "matiere organique",
+            "organique",
+            "Organique",
+            "Biodégradable",
+            "biodégradable",
+            "Biodegradable",
+            "biodegradable",
+            "papier",
+            "Papier",
+            "tissu",
+            "Tissu",
+            "Coton",
+            "coton"
+        ]
+    },
+    "metal":{
+        descWord:[
+            "Métal",
+            "métal",
+            "Metal",
+            "metal",
+            "Metallique",
+            "metallique",
+            "Métallique",
+            "métallique",
+            "cuivre",
+            "Cuivre",
+            "Aluminium",
+            "aluminium",
+            "Aluminum",
+            "aluminum",
+            "fer",
+            "Fer"
+        ]
+    }
+}
+
+export const materials_index = {
+    "petrole":0.5,
+    "bois":0.2,
+    "verre":0.3,
+    "plastique":0.4,
+    "pierre":0.1,
+    "organique":0.1,
+    "metal":0.3
+}
