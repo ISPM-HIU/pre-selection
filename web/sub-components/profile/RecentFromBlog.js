@@ -88,7 +88,7 @@ const RecentFromBlog = () => {
             <div className="row">
               <div className="col-8">
                 <span className="me-1 me-md-4">
-                  <button type="button" class="btn btn-outline-primary">  <i className="fe fe-shopping-bag"></i>  Acheter</button>
+                  <button type="button" className="btn btn-outline-primary">  <i className="fe fe-shopping-bag"></i>  Acheter</button>
                 </span>
                 <span className="me-1 me-md-4">
                   <Button className="btn btn-info" variant="link" onClick={() => setShowModal(true)}>
@@ -98,7 +98,7 @@ const RecentFromBlog = () => {
               </div>
               <div className="col-4 d-flex justify-content-end">
                 <span>
-                  <button type="button" class="btn btn-dark"
+                  <button type="button" className="btn btn-dark"
                     style={{
                       backgroundColor: " #562356;"
                     }}><i className="fe fe-share-2"></i> Partager</button>
