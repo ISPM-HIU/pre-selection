@@ -1,13 +1,13 @@
 // import node module libraries
-import React ,{ useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { MoreVertical } from "react-feather";
-import { Col, Row, Card, Form, Dropdown, Image, Button , Modal} from "react-bootstrap";
+import { Col, Row, Card, Form, Dropdown, Image, Button, Modal } from "react-bootstrap";
 
 const RecentFromBlog = () => {
   const [showModal, setShowModal] = useState(false);
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-    
+
     <Link
       href=""
       ref={ref}
@@ -99,9 +99,9 @@ const RecentFromBlog = () => {
               <div className="col-4 d-flex justify-content-end">
                 <span>
                   <button type="button" class="btn btn-dark"
-                  style={{
-                    backgroundColor:" #562356;"
-                  }}><i className="fe fe-share-2"></i> Partager</button>
+                    style={{
+                      backgroundColor: " #562356;"
+                    }}><i className="fe fe-share-2"></i> Partager</button>
                 </span>
               </div>
             </div>
@@ -110,29 +110,28 @@ const RecentFromBlog = () => {
         </Card.Body>
       </Card>
 
-          {/* Commentaire Modal */}
+      {/* Commentaire Modal */}
       <Modal show={showModal} onHide={() => setShowModal(false)}>
-        <Modal.Header closeButton style={{ backgroundColor: "rgb(128, 102, 139)" }}>
-          <Modal.Title>Commentaire</Modal.Title>
+        <Modal.Header closeButton style={{ backgroundColor: "rgb(128, 102, 139)"}}>
+          <Modal.Title style={{color:"white"}}>Commentaire</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {/* Ajoutez ici le contenu de votre modal pour le commentaire */}
-          <p>Ce que vous pensez de cette publication.</p>
-          <div className="d-flex mb-5 smooth-shadow-sm" style={{borderRadius:" 4px"}}>
-              <div>
-                <Image
-                  src="/images/avatar/avatar-7.jpg"
-                  className="rounded-circle avatar-md"
-                  alt=""
-                />
-              </div>
-              <div className="ms-3 ">
-                <h5 className="mb-1">Irene Hargrove</h5>
-                <p className="text-muted mb-2">
-                  Votre produit me plaît énormément
-                </p>
-                <p className="fs-5 mb-0">il y a 19 minutes</p>
-              </div>
+          <div className="d-flex mb-5 smooth-shadow-sm p-3" style={{ borderRadius: " 4px" }}>
+            <div>
+              <Image
+                src="/images/avatar/avatar-7.jpg"
+                className="rounded-circle avatar-md"
+                alt=""
+              />
+            </div>
+            <div className="ms-3 ">
+              <h5 className="mb-1">Irene Hargrove</h5>
+              <p className="text-muted mb-2">
+                Votre produit me plaît énormément
+              </p>
+              <p className="fs-5 mb-0">il y a 19 minutes</p>
+            </div>
           </div>
           <Form>
             <Form.Group controlId="commentForm.ControlTextarea">

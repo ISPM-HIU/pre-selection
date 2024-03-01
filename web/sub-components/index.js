@@ -23,12 +23,7 @@ import RecentFromBlog from 'sub-components/profile/RecentFromBlog';
 import CurrentPlan from 'sub-components/billing/CurrentPlan';
 import BillingAddress from 'sub-components/billing/BillingAddress';
 
-// sub components for /pages/settings
-import DeleteAccount from 'sub-components/settings/DeleteAccount';
-import EmailSetting from 'sub-components/settings/EmailSetting';
-import GeneralSetting from 'sub-components/settings/GeneralSetting';
-import Notifications from 'sub-components/settings/Notifications';
-import Preferences from 'sub-components/settings/Preferences';
+
 
 
 export {
@@ -49,9 +44,4 @@ export {
    CurrentPlan,
    BillingAddress,
 
-   DeleteAccount, 
-   EmailSetting,  
-   GeneralSetting, 
-   Notifications, 
-   Preferences
 };

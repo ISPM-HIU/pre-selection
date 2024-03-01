@@ -19,10 +19,7 @@ const Error404 = () => {
                 className="img-fluid"
               />
             </div>
-            <h1 className="display-4 fw-bold">Oops! the page not found.</h1>
-            <p className="mb-4">
-              Or simply leverage the expertise of our consultation team.
-            </p>
+            <h1 className="display-4 fw-bold">Oops! Page introuvable.</h1>
             <Link href="/" className="btn btn-primary">
               Go Home
             </Link>

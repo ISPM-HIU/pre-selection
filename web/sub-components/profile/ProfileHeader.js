@@ -2,7 +2,7 @@
 import { PlusCircle } from "react-feather";
 import Link from "next/link";
 import { useContext, useState } from "react";
-import { Col, Row, Image } from "react-bootstrap";
+import { Col, Row, Image,Button } from "react-bootstrap";
 import { UserContext } from "./context/userContext";
 
 const ProfileHeader = () => {
