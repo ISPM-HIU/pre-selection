@@ -29,15 +29,6 @@ const DefaultDashboardLayout = (props) => {
 					/>
 				</div>
 				{props.children}
-				<div className='px-6 border-top py-3'>
-					<Row>
-						<Col sm={6} className='text-center text-sm-start mb-2 mb-sm-0'>
-							<p className='m-0'>Équipe<a href='https://codescandy.com/' target='_blank'>Techtitan</a></p></Col>
-						<Col sm={6} className='text-center text-sm-end'>
-							<p className='m-0'>Igglia 4 <a href='https://themewagon.com/' target='_blank'>2024</a></p>
-						</Col>
-					</Row>
-				</div>
 			</div>
 		</div>
 	);

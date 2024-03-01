@@ -20,6 +20,8 @@ const Billing = () => {
   const [data, setData] = useState();
   const [matieres, setMatieres] = useState([{ id: 1, name: '' }]);
   const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [validation, setValidation] = useState(null);
   const { http } = useHttps();
   const token = getToken();
 
@@ -48,6 +50,7 @@ const Billing = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
     let formData = new FormData()
     if(image)
       formData.append("image", image)
@@ -55,14 +58,29 @@ const Billing = () => {
     formData.append("product_name", data.product_name);
     formData.append("description", data.description);
     formData.append("userId", token.user.id);
-    const result = matieres.join(",");
+    let mat_name = []
+    matieres.forEach(mat => {
+      mat_name.push(mat.name)
+    })
+    const result = mat_name.join(", ");
     formData.append("products", result);
     try {
-      let response = await http.post("/publications", formData)
-      if(response) {
-        console.log(response.data)
+      let validation = await http.post("/validation", {prompt: result})
+      console.group(validation.data)
+      if(validation.data.validation == "Success") {
+        setValidation(true)
+        let response = await http.post("/publications", formData)
+        if(response) {
+          console.log(response.data)
+          setLoading(false)
+        }
+      }
+      else {
+        setValidation(false)
+        setLoading(false)
       }
     } catch (error) {
+      setLoading(false)
       console.log(error)
     }
   } 
@@ -143,7 +161,7 @@ const Billing = () => {
                               {matieres.map((m, index) => (
 
                                 <ListGroup.Item key={m.id}>
-                                  <Row >
+                                  <Row>
                                     <Col className='col-9'>
                                       <Form.Control type="text"
                                         placeholder="Ajouter une matière que vous avez utilisée"
@@ -160,6 +178,8 @@ const Billing = () => {
 
                               ))}
                             </ListGroup>
+                            {loading && !validation && (<p style={{color: "red"}}>Les matières que vous avez utilisées dépassent la moyenne écologique. 
+                            Elles peuvent encore nuire à la pollution à cause de l'énergie.</p>)}
                             <Button variant="primary" className="mt-2" onClick={addMatiere}>Ajouter une autre matière</Button>
 
                             {/* end of code */}
@@ -180,8 +200,8 @@ const Billing = () => {
                     </Row>
                     <Row>
                       <Col md={8} xs={12}>
-                        <Button type='submit' variant="success" className="me-4 mb-2 ms-0">
-                          Valider
+                        <Button disabled={loading} type='submit' variant="success" className="me-4 mb-2 ms-0">
+                          {loading ? (validation == true ? "Publication..." : "En attente de validation...") : "Valider"}
                         </Button>
                       </Col>
                     </Row>
