@@ -2,6 +2,7 @@
 import { Row, Col, Card, Image } from "react-bootstrap";
 
 function PostLists() {
+ 
   return (
     <Col className="m-1">
       {/* card */}
