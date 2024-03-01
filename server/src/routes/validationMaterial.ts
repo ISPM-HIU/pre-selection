@@ -1,5 +1,6 @@
 import express from "express"
 import { getMaterials } from "../services/getMaterials";
+import { getSuggestion } from "../services/get-suggestion";
 
 const router = express.Router();
 
@@ -9,8 +10,15 @@ router.post(
         let {
             material
         } = req.body
-        const getMaterial = getMaterials(material);
-        res.status(200).send(getMaterial);
+        var suggestions = [] as any
+        const getMaterial : any = getMaterials(material);
+        if(getMaterial) {
+            for await (let materiel of getMaterial) {
+                let sug = await getSuggestion(materiel.materiel)
+                suggestions.push(sug)
+            }
+        }
+        res.status(200).send({material: getMaterial, suggestions});
     }
 )
 

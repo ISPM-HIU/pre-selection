@@ -13,8 +13,8 @@ const send_to_model =  async (allPublication: any) => {
             "responses": [
                 publication.description
             ]
-            }
-            data.intents.push(pub_data)
+        }
+        data.intents.push(pub_data)
     }
 
     try {
