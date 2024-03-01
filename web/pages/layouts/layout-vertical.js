@@ -10,7 +10,7 @@ const LayoutVertical = () => {
           <div className="text-center mb-7">
             <h1 className="display-4">Layouts</h1>
             <p>
-              Customize your overview page layout. Choose the one that best fits
+              Customize your  page layout. Choose the one that best fits
               your needs.
             </p>
           </div>

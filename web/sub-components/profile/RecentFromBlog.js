@@ -1,11 +1,13 @@
 // import node module libraries
-import React from "react";
+import React ,{ useState } from "react";
 import Link from "next/link";
 import { MoreVertical } from "react-feather";
-import { Col, Row, Card, Form, Dropdown, Image, Button } from "react-bootstrap";
+import { Col, Row, Card, Form, Dropdown, Image, Button , Modal} from "react-bootstrap";
 
 const RecentFromBlog = () => {
+  const [showModal, setShowModal] = useState(false);
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+    
     <Link
       href=""
       ref={ref}
@@ -37,7 +39,7 @@ const RecentFromBlog = () => {
   };
 
   return (
-    <Col xl={6} md={12} xs={12} className="mb-6">
+    <Col xl={8} md={12} xs={12} className="mb-6">
       <Card>
         <Card.Body>
           <div className="d-flex justify-content-between mb-5 align-items-center">
@@ -52,7 +54,7 @@ const RecentFromBlog = () => {
               </div>
               <div className="ms-3">
                 <h5 className="mb-0 fw-bold">Jitu Chauhan</h5>
-                <p className="mb-0">19 minutes ago</p>
+                <p className="mb-0">il y a 19 minutes</p>
               </div>
             </div>
             <div>
@@ -79,72 +81,71 @@ const RecentFromBlog = () => {
             <span className="me-1 me-md-4">
               <i className="fe fe-heart"></i> <span>20 Like</span>
             </span>
-            <span className="me-1 me-md-4">
-              <i className="fe fe-message-square"></i> <span>12 Comment</span>
-            </span>
-            <span>
-              <i className="fe fe-share-2"></i>
-              <span> Share</span>
-            </span>
           </div>
-          <div className="border-bottom border-top py-5 d-flex align-items-center mb-4">
-            <div className="avatar-group me-2 me-md-3">
-              <span className="avatar avatar-sm">
-                {/* Image */}
-                <Image
-                  alt="avatar"
-                  src="/images/avatar/avatar-7.jpg"
-                  className="rounded-circle"
-                />
-              </span>
-              <span className="avatar avatar-sm">
-                {/* Image */}
-                <Image
-                  alt="avatar"
-                  src="/images/avatar/avatar-8.jpg"
-                  className="rounded-circle"
-                />
-              </span>
-              <span className="avatar avatar-sm">
-                {/* Image */}
-                <Image
-                  alt="avatar"
-                  src="/images/avatar/avatar-9.jpg"
-                  className="rounded-circle"
-                />
-              </span>
-            </div>
-            <div>
-              <span>You and 20 more liked this</span>
+          <div className=" border-top py-2 d-flex align-items-center mb-4">
+          </div>
+          <div className="mb-4">
+            <div className="row">
+              <div className="col-8">
+                <span className="me-1 me-md-4">
+                  <button type="button" class="btn btn-outline-primary">  <i className="fe fe-shopping-bag"></i>  Acheter</button>
+                </span>
+                <span className="me-1 me-md-4">
+                  <Button className="btn btn-info" variant="link" onClick={() => setShowModal(true)}>
+                    <i className="fe fe-message-square"></i> Commentaire
+                  </Button>
+                </span>
+              </div>
+              <div className="col-4 d-flex justify-content-end">
+                <span>
+                  <button type="button" class="btn btn-dark"
+                  style={{
+                    backgroundColor:" #562356;"
+                  }}><i className="fe fe-share-2"></i> Partager</button>
+                </span>
+              </div>
             </div>
           </div>
           {/* row */}
-          <Row>
-            <Col xl={1} lg={2} md={2} xs={12} className="mb-3 mb-lg-0">
-              <Image
-                src="/images/avatar/avatar-1.jpg"
-                className="avatar avatar-md rounded-circle"
-                alt=""
-              />
-            </Col>
-            <Col xl={11} lg={10} md={9} xs={12}>
-              <Row className="row g-3 align-items-center">
-                <Col md={2} xxl={1}>
-                  <Form.Label>Name</Form.Label>
-                </Col>
-                <Col md={8} xxl={9} className="mt-0 mt-md-3">
-                  <Form.Control type="text" placeholder="" id="name" required />
-                </Col>
-                <Col md={2} xxl={2}>
-                  <Button type="submit" className="d-grid">
-                    Post
-                  </Button>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
         </Card.Body>
       </Card>
+
+          {/* Commentaire Modal */}
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton style={{ backgroundColor: "rgb(128, 102, 139)" }}>
+          <Modal.Title>Commentaire</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {/* Ajoutez ici le contenu de votre modal pour le commentaire */}
+          <p>Ce que vous pensez de cette publication.</p>
+          <div className="d-flex mb-5 smooth-shadow-sm" style={{borderRadius:" 4px"}}>
+              <div>
+                <Image
+                  src="/images/avatar/avatar-7.jpg"
+                  className="rounded-circle avatar-md"
+                  alt=""
+                />
+              </div>
+              <div className="ms-3 ">
+                <h5 className="mb-1">Irene Hargrove</h5>
+                <p className="text-muted mb-2">
+                  Votre produit me plaît énormément
+                </p>
+                <p className="fs-5 mb-0">il y a 19 minutes</p>
+              </div>
+          </div>
+          <Form>
+            <Form.Group controlId="commentForm.ControlTextarea">
+              <Form.Label>Ce que vous pensez de cette publication.</Form.Label>
+              <Form.Control as="textarea" rows={3} />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" style={{ backgroundColor: "#80668b" }} onClick={() => setShowModal(false)}>Fermer</Button>
+        </Modal.Footer>
+
+      </Modal>
     </Col>
   );
 };
