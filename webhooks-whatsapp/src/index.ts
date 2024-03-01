@@ -1,14 +1,29 @@
-import express from "express";
+import express, { response } from "express";
 import { config, parse } from "dotenv";
 import { WhatsAppParams } from "./types/WhatsAppParams";
 import { sendMessage } from "./actions/action";
 import { WhatsAppResponse } from "./types/WhatsAppResponse";
+import axios from "axios";
 
 const app = express();
 const dotenv = config();
 const port = process.env.PORT;
 app.use(express.json());
-
+const fetch_data = async (message: string) => {
+    const url = "http://127.0.0.1:8888/chatbot";
+    try {
+        let response = await axios.post(url, { "question": message }, {
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+        if (response) {
+            return response.data.question;
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
 app.get("/webhook", (req, res) => {
     console.log("Verification API");
     const verify_token = process.env.VERIFY_TOKEN;
@@ -33,11 +48,11 @@ app.get("/webhook", (req, res) => {
 app.post("/webhook", async (req, res) => {
     const request = req.body as WhatsAppResponse;
     console.log(`Init action from ${process.env.BUSINESS_ID} - Action ${request.object}`);
-    
+
     if (request) {
         if (request.entry) {
             if (request.entry[0].changes) {
-                if(request.entry[0].changes[0].value.messages){
+                if (request.entry[0].changes[0].value.messages) {
                     if (
                         request.entry[0].changes[0].value.messages[0].text.body &&
                         request.entry[0].changes[0].field === "messages"
@@ -49,17 +64,28 @@ app.post("/webhook", async (req, res) => {
                             request.entry[0].changes[0].value.messages[0].text.body;
                         const number =
                             request.entry[0].changes[0].value.contacts[0].wa_id;
-    
+
                         // Set your action here (API Request for example)
-    
-                        var custom_message = "Set your own value";
-    
-                        const res_message = await sendMessage(
-                            number,
-                            custom_message
-                        );
-    
-                        console.log(res_message);
+                        const url = "http://127.0.0.1:8888/chatbot";
+                            await axios.post(url, { "question": message }, {
+                                headers: {
+                                    "Content-Type": "application/json",
+                                }
+                            }).then(async(response)=>{
+                                console.log(response.data.response.response);
+                                
+                                const res_message = await sendMessage(
+                                    number,
+                                    response.data.response.response
+                                );
+                            }).catch((err)=>{
+                                console.log(err);
+                                
+                            })
+                            // if (response) {
+                            //     return response.data.question;
+                            // }
+                                             
                         res.status(200).json(request);
                     } else {
                         console.log(request);
@@ -70,6 +96,8 @@ app.post("/webhook", async (req, res) => {
         }
     }
 });
+
+
 
 app.listen(port, () => {
     console.log("Server are starting at " + port);
