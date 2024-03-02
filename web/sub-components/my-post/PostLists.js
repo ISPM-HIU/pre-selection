@@ -1,18 +1,8 @@
 // import node module libraries
 import { Row, Col, Card, Image } from "react-bootstrap";
-
-function PostLists() {
-  return (
-    <Col className="m-1">
-      {/* card */}
-      <Card>
-        {/* card body */}
-        <Card.Body>
-          {/* card title */}
-          <Card.Title as="h4">Mes publications</Card.Title>
-          <Card className="shadow-none border hover-anim">
-            <Card.Body>
-              <div className="d-flex">
+const Post = ()=>{
+  return(
+<div className="d-flex">
                 <div>
                   <div style={{width:"100px",height:"100px"}} className="overflow-hidden">
                     <Image
@@ -30,6 +20,21 @@ function PostLists() {
                   <p className="fs-5 mb-0">Il y a 2 min</p>
                 </div>
               </div>
+  )
+}
+function PostLists() {
+ 
+  return (
+    <Col className="m-1">
+      {/* card */}
+      <Card>
+        {/* card body */}
+        <Card.Body>
+          {/* card title */}
+          <Card.Title as="h4">Mes publications</Card.Title>
+          <Card className="shadow-none border hover-anim">
+            <Card.Body>
+              
             </Card.Body>
           </Card>
         </Card.Body>

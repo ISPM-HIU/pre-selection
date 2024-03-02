@@ -114,12 +114,12 @@ const ChatBot = () => {
                         </Col>
                         <Col xs={2} className="">
                             <span className='px-5'>
-                              <i class="fe fe-mic-off"></i>
+                              <i className="fe fe-mic-off"></i>
                             </span>
                             <Button disabled={loading} variant="primary" type="submit">
                                 {loading ? "Chargement..." : "Envoyer"}
                                 <span className='px-2'>
-                                    <i class="fe fe-send"></i>
+                                    <i className="fe fe-send"></i>
                                 </span>
 
                             </Button>

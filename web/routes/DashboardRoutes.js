@@ -33,7 +33,7 @@ export const DashboardMenu = [
 	{
 		id: uuid(),
 		link: '/my-post',
-		title: 'Mes publications',
+		title: 'Notifications',
 		icon: "pause"
 	},
 	{
