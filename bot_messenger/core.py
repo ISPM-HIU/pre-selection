@@ -22,7 +22,7 @@ def main(sender_id, cmd, **ext):
     if res.status_code == 200:
         res_from_web = res.json()
         print('res_from_web', res_from_web)
+        chat.send_text(sender_id, res_from_web["response"]+", Voici le lien pour acheter: http://localhost:3000/post/"+ str(res_from_web["id"]))
     else:
         print("Request failed")
-
-    chat.send_text(sender_id, "Hello, Ampalibe")
+        chat.send_text(sender_id, "Veuillez poser une autre question s'il vous plaît.")

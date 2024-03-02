@@ -35,31 +35,16 @@ const ListeMaterial = (props) => {
 }
 
 const MaterialSuggestion = (props) => {
-    const [posts, setPosts] = useState([]);
-    const { http } = useHttps();
-    const fetchPosts = (id) => {
-        http.get(`/publications/${id}`).then(
-            (response) => {
-                setPosts(prevPosts=>[...prevPosts, response.data])
-            }
-        ).catch((err) => { console.log(err); })
-    }
-    useEffect(() => {
-        console.log(props.id);
-        props.id.map((item) => {
-            fetchPosts(item.response.id)
-        })
-
-    }, [props.id])
+    
     return (
         <Container fluid className="p-6">
             <Card className="mb-4">
                 <Card.Body>
                     <Card.Title as="h4">Materiel suggéré</Card.Title>
                     {
-                        posts && posts.map((item, index) => {
-                            <ListeMaterial key={index} description={item.description} product_name={item.product_name} />
-                        })
+                        props.suggestion &&
+                            <p>{ props.suggestion.response}, lien: <Link href={`/post/${props.suggestion.id}`}>http://localhost:3000/posts/{props.suggestion.id}</Link></p>
+                        
                     }
                 </Card.Body>
             </Card>
