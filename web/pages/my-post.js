@@ -1,5 +1,5 @@
 import useHttps from "hooks/useHttp";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import PostLists from "sub-components/my-post/PostLists";
 import SponsorLists from "sub-components/my-post/SponsorLists";
@@ -12,10 +12,13 @@ export default function Page(){
         http.get('/notifications',{userId:1}).then(
             (response)=>{
                 setPost(response.data.filter((item)=>item.type == 'achat'))
-                setPost(response.data.filter((item)=>item == 'investissement'))
+                setSponsor(response.data.filter((item)=>item == 'investissement'))
             }
         ).catch((err)=>console.log(err))
     }
+    useEffect(()=>{
+        fetch()
+    },[])
     return <>
     <Container fluid className="p-6 d-flex">
         <PostLists />
