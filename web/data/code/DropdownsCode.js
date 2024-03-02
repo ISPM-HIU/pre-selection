@@ -130,13 +130,7 @@ export const MenuAlignmentCode = `
         id="dropdown-menu-align-start"
         className="me-1 mb-2 mb-lg-0"
         >
-        <Dropdown.Item eventKey="1">Action</Dropdown.Item>
-        <Dropdown.Item eventKey="2">
-            Another action
-        </Dropdown.Item>
-        <Dropdown.Item eventKey="3">
-            Something else here
-        </Dropdown.Item>
+        <Dropdown.Item eventKey="1">Profil</Dropdown.Item>
         <Dropdown.Divider />
         <Dropdown.Item eventKey="4">
             Separated link
@@ -151,7 +145,7 @@ export const MenuAlignmentCode = `
         >
         <Dropdown.Item eventKey="1">Action</Dropdown.Item>
         <Dropdown.Item eventKey="2">
-            Another action
+            Profil
         </Dropdown.Item>
         <Dropdown.Item eventKey="3">
             Something else here

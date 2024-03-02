@@ -1,20 +1,16 @@
 import axios from "axios";
 
 const send_to_model =  async (allPublication: any) => {
-    let data = {
-        "intents": [] as any
-    }
-    const url = "http://127.0.0.1:8888/load-to-model";
+    let data = []
+    const url = "http://127.0.0.1:8888/chatbot";
     for await (let publication of allPublication) {
         let pub_data =  {
-            "tag": publication.product_name,
-            "patterns": [publication.products, publication.description],
+            "id": publication.id,
+            "intents": publication.description.split(" "),
             "publicationId": publication.id,
-            "responses": [
-                publication.description
-            ]
+            "response": publication.description
         }
-        data.intents.push(pub_data)
+        data.push(pub_data)
     }
 
     try {

@@ -90,13 +90,7 @@ const Dropdowns = () => {
 											</Dropdown.Toggle>
 
 											<Dropdown.Menu>
-												<Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-												<Dropdown.Item href="#/action-2">
-													Another action
-												</Dropdown.Item>
-												<Dropdown.Item href="#/action-3">
-													Something else
-												</Dropdown.Item>
+												<Dropdown.Item href="#/action-1">Profil</Dropdown.Item>
 											</Dropdown.Menu>
 										</Dropdown>
 										{/* end of code */}
@@ -217,7 +211,7 @@ const Dropdowns = () => {
 												title={variant}
 												className="me-1 mb-2 mb-lg-0 "
 											>
-												<Dropdown.Item eventKey="1">Action</Dropdown.Item>
+												<Dropdown.Item eventKey="1">Profil </Dropdown.Item>
 												<Dropdown.Item eventKey="2">
 													Another action
 												</Dropdown.Item>

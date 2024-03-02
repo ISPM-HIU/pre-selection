@@ -9,5 +9,6 @@ router.get("/for-user/:userId", controller.getForUser)
 router.post("/", controller.create)
 router.post("/action", controller.action)
 router.delete("/:id", controller.delete)
+router.post("/get-bot-response", controller.getBotResponse)
 
 export default router

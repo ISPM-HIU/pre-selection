@@ -122,7 +122,7 @@ const Billing = () => {
                           onChange={handleChange}
                           name="product_name"
                           className="form-control"
-                          placeholder="Entrez le nom de votre produit"
+                          placeholder="Entrer le nom de votre produit"
                           id="nomProduit"
                           required
                         />
@@ -161,7 +161,7 @@ const Billing = () => {
                           required
                           rows={3}
                           type="textarea"
-                          placeholder="Entrez sa description"
+                          placeholder="Entrer sa description"
                           id="description"
                         />
                       </Col>

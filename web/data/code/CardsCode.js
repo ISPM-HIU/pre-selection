@@ -52,7 +52,7 @@ export const ListGroups2Code = `
 </Card>
 `.trim();
 
-export const CardImagesCode = `   
+export const CardsCode = `   
 <Card style={{ width: '18rem' }}>
     <Card.Img variant="top" src="https://fakeimg.pl/640x360/?text=Image Placeholder" />
     <Card.Body>
