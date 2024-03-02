@@ -51,9 +51,11 @@ const RecentFromBlog = ({ props }) => {
   }
   return (
     <>
-      <Card className="mb-6">
+      <Card className="mb-6" >
+        
         <Card.Body>
-          <div className="d-flex justify-content-between mb-5 align-items-center">
+        <Link href={`/post/${props.id}`}>
+        <div className="d-flex justify-content-between mb-5 align-items-center">
             {/* avatar */}
             <div className="d-flex align-items-center">
               <div>
@@ -92,6 +94,8 @@ const RecentFromBlog = ({ props }) => {
           </div>
           <div className=" border-top py-2 d-flex align-items-center mb-4">
           </div>
+        </Link>
+          
           <div className="mb-4">
             <div className="row">
               <div className="col-8">

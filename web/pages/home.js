@@ -20,6 +20,7 @@ import { useEffect, useState } from 'react';
 const Profile = () => {
   const { http } = useHttps();
   const [posts, setPosts] = useState([]);
+
   const fetchPosts = ()=>{
     http.get('/publications').then(
       (response)=>{
@@ -28,9 +29,11 @@ const Profile = () => {
       }
     ).catch((err)=>{console.log(err);})
   }
+
   useEffect(()=>{
     fetchPosts();
   },[])
+  
   return (
     <UserContextProvider>
       <Container fluid className="p-6">
