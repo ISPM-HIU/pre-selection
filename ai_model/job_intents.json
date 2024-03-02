@@ -1,69 +1,80 @@
 {
     "intents": [
         {
-            "tag": "Petrole",
+            "tag": "Lorem",
             "patterns": [
-                "Petrole",
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
+                "Lorem",
+                "Lorem"
             ],
-            "publicationId": 1,
+            "publicationId": 52,
             "responses": [
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
+                "Lorem"
             ]
         },
         {
-            "tag": "Petrole",
+            "tag": "Fatana mitsitsy",
             "patterns": [
-                "Petrole",
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
+                "hy",
+                "nhy"
             ],
-            "publicationId": 2,
+            "publicationId": 51,
             "responses": [
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
+                "nhy"
             ]
         },
         {
-            "tag": "Petrole",
+            "tag": "Fatana mitsitsy",
             "patterns": [
-                "Petrole",
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
+                "charbon, bois",
+                "Description"
             ],
-            "publicationId": 3,
+            "publicationId": 50,
             "responses": [
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
+                "Description"
             ]
         },
         {
-            "tag": "Petrole",
+            "tag": "Fatana mitsitsy",
             "patterns": [
-                "Petrole",
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
+                "charbon, bois",
+                "Description Fatana mitsitsy"
             ],
-            "publicationId": 4,
+            "publicationId": 49,
             "responses": [
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
+                "Description Fatana mitsitsy"
             ]
         },
         {
-            "tag": "Petrole",
+            "tag": "Agro prod",
             "patterns": [
-                "Petrole",
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
+                "petrole, gaz",
+                "Les r\u00e9frig\u00e9rateurs nuisent \u00e0 l'environnement en utilisant de l'\u00e9lectricit\u00e9 non renouvelable. J'ai cr\u00e9er une r\u00e9frig\u00e9rateurs en utilisant les minimum d'energie non renouveleble"
             ],
-            "publicationId": 5,
+            "publicationId": 48,
             "responses": [
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
+                "Les r\u00e9frig\u00e9rateurs nuisent \u00e0 l'environnement en utilisant de l'\u00e9lectricit\u00e9 non renouvelable. J'ai cr\u00e9er une r\u00e9frig\u00e9rateurs en utilisant les minimum d'energie non renouveleble"
             ]
         },
         {
-            "tag": "Petrole",
+            "tag": "petrole Eco",
             "patterns": [
-                "Petrole",
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
+                "eau, electricit\u00e9",
+                "Les petrole nuisent \u00e0 l'environnement en utilisant de l'\u00e9lectricit\u00e9 non renouvelable. J'ai cr\u00e9er une fatana en utilisant les minimum d'energie non renouveleble"
             ],
-            "publicationId": 6,
+            "publicationId": 37,
             "responses": [
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1X2lkIjoxLCJ1X2VtYWlsIjoidGVzdEB0ZXN0LnRlc3QiLCJpYXQiOjE3MDkzMjM4ODcsImV4cCI6MTc0MDg1OTg4N30.mO10fSFYFtuOg6A-m81hvrFOzREtFDE17E_uG38T7bU"
+                "Les petrole nuisent \u00e0 l'environnement en utilisant de l'\u00e9lectricit\u00e9 non renouvelable. J'ai cr\u00e9er une fatana en utilisant les minimum d'energie non renouveleble"
+            ]
+        },
+        {
+            "tag": "Frigo Eco",
+            "patterns": [
+                "gaz minime, eau, electricit\u00e9",
+                "Les r\u00e9frig\u00e9rateurs nuisent \u00e0 l'environnement en utilisant de l'\u00e9lectricit\u00e9 non renouvelable. J'ai cr\u00e9er une r\u00e9frig\u00e9rateurs en utilisant les minimum d'energie non renouveleble"
+            ],
+            "publicationId": 36,
+            "responses": [
+                "Les r\u00e9frig\u00e9rateurs nuisent \u00e0 l'environnement en utilisant de l'\u00e9lectricit\u00e9 non renouvelable. J'ai cr\u00e9er une r\u00e9frig\u00e9rateurs en utilisant les minimum d'energie non renouveleble"
             ]
         }
     ]

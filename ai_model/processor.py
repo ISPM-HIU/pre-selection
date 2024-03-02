@@ -15,7 +15,9 @@ nltk.download('wordnet')
 from keras.models import Sequential
 from keras.layers import Dense, Dropout
 from keras.optimizers.legacy import SGD
-
+job_intents_global = {
+    "intents"
+}
 def clean_up_sentence(sentence):
     sentence_words = nltk.word_tokenize(sentence)
     sentence_words = [lemmatizer.lemmatize(word.lower()) for word in sentence_words]
@@ -64,22 +66,23 @@ def getResponse(ints, intents_json):
 
 def chatbot_response(msg):
     ints = predict_class(msg, model)
-    res = getResponse(ints, intents)
+    print(job_intents_global)
+    res = getResponse(ints, job_intents_global)
     return res
 
 def createNewModel(new_data):
-    print(new_data)
     # Load JSON data from a file
     # Save the new data to a JSON file
-    with open('job_intents.json', 'w') as file:
-        json.dump(new_data, file, indent=4)
-    
+    # with open('job_intents.json', 'w') as file:
+    #     json.dump(new_data, file, indent=4)
+    job_intents_global = new_data
+    print(job_intents_global)
     words=[]
     classes = []
     documents = []
     ignore_words = ['?', '!', ',', '.']
     data_file = open('job_intents.json', encoding='utf-8').read()
-    intents = json.loads(data_file)
+    intents = job_intents_global # json.loads(data_file)
 
     for intent in intents['intents']:
         for pattern in intent['patterns']:
