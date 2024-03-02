@@ -2,6 +2,7 @@ import { Response, Request } from "express"
 import { generateToken, uploadFile } from '../services/services'
 import model from "../models/publications"
 import { send_to_model } from "../services/send-to-model"
+import axios from "axios"
 
 const controller = {
     getAll: async (req: Request, res: Response) => {
@@ -92,8 +93,6 @@ const controller = {
                 product_name
             )
             if(response) {
-                let allPublication = await model.getAll()
-                send_to_model(allPublication)
                 res.status(200).send(response)
             }
             else res.status(500).send("Creation failed")
@@ -109,6 +108,41 @@ const controller = {
         try { 
             let data = await model.delete(id)
             res.status(200).send(data)
+        }
+        catch (error: any) {
+            console.log(error)
+            res.status(500).send(error.message)
+        }
+    },
+    getBotResponse:  async (req: Request, res: Response) => {
+        let question = req.body.question
+        console.log(question)
+        try { 
+
+            let allPublication = await model.getAll()
+            let data = []
+            const url = "http://127.0.0.1:8888/chatbot";
+            for await (let publication of allPublication) {
+                let pub_data = {
+                    "id": publication.id,
+                    "intents": publication?.description?.split(" "),
+                    "publicationId": publication.id,
+                    "response": publication.description
+                }
+                data.push(pub_data)
+            }
+            try {
+                let response = await axios.post(url, {model:data, question}, {
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                })
+                if(response) {
+                    console.log("Success:", response.data);
+                }
+            } catch (error) {
+                console.error("Error:", error);
+            }
         }
         catch (error: any) {
             console.log(error)

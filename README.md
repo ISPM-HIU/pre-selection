@@ -89,3 +89,10 @@ example
 ```
     ngrok http --domain=intent-wallaby-poorly.ngrok-free.app 9001
 ```
+
+## Spacy 
+- Install spacy_ai: 
+```
+    pip install spacy
+    python -m spacy download en_core_web_sm
+```
