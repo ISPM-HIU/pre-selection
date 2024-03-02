@@ -1,4 +1,5 @@
 // import node module libraries
+"use client"
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { MoreVertical } from "react-feather";
@@ -7,14 +8,23 @@ import useHttps from "hooks/useHttp";
 import moment from 'moment';
 import 'moment/locale/fr';
 import { getToken } from "services/token";
+import {loadStripe} from '@stripe/stripe-js';
+import {
+  EmbeddedCheckoutProvider,
+  EmbeddedCheckout,
+} from '@stripe/react-stripe-js';
+import axios from "axios";
 
-const RecentFromBlog = ({ props }) => {
+const   RecentFromBlog = ({ props }) => {
+  const stripePromise = loadStripe('pk_test_51OpkT1RuHF7sMfYGW5PlHQk3lfacfpTWyhC822QmxOqYSjH4MTbbkc2yZOHTrOMsEBFnuZxnGmswNa6DkeAx6RB500reJFUzhC');
+  const [clientSecret, setClientSecret] = useState('');
   const [showModal, setShowModal] = useState(false);
   const timeFromNow = moment(props.createdAt).fromNow();
   const token = getToken()
   const {http} = useHttps()
   const [item,setItem] = useState(props)
-
+  
+  const options = {clientSecret};
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <Link
       href=""
@@ -128,7 +138,10 @@ const RecentFromBlog = ({ props }) => {
             <div className="row">
               <div className="col-8">
                 <span className="me-1 me-md-4">
+                  <a style={{textDecoration:'none'}} href={props.link} target="_blank">
                   <button type="button" className="btn btn-outline-primary" onClick={buyAction}>  <i className="fe fe-shopping-bag"></i>  Acheter</button>
+
+                  </a>
                 </span>
                 <span className="me-1 me-md-4">
                 <Link href={`/post/${props.id}`}>
@@ -151,6 +164,7 @@ const RecentFromBlog = ({ props }) => {
             </div>
           </div>
           {/* row */}
+          
         </Card.Body>
       </Card>
 
@@ -161,30 +175,9 @@ const RecentFromBlog = ({ props }) => {
         </Modal.Header>
         <Modal.Body>
           {/* Ajoutez ici le contenu de votre modal pour le commentaire */}
-          <div className="d-flex mb-5 smooth-shadow-sm p-3" style={{ borderRadius: " 4px" }}>
-            <div>
-              {/* {props.image && (
-                <Image
-                  src={`http://localhost:9090/images/${props.image}`}
-                  className="rounded-circle avatar-md"
-                  alt=""
-                />
-              )} */}
-            </div>
-            <div className="ms-3 ">
-              <h5 className="mb-1">Irene Hargrove</h5>
-              <p className="text-muted mb-2">
-                Votre produit me plaît énormément
-              </p>
-              <p className="fs-5 mb-0">il y a 19 minutes</p>
-            </div>
-          </div>
-          <Form>
-            <Form.Group controlId="commentForm.ControlTextarea">
-              <Form.Label>Ce que vous pensez de cette publication.</Form.Label>
-              <Form.Control as="textarea" rows={3} />
-            </Form.Group>
-          </Form>
+          <div id="checkout">
+          
+    </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" style={{ backgroundColor: "#80668b" }} onClick={() => setShowModal(false)}>Fermer</Button>

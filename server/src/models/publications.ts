@@ -82,7 +82,9 @@ const model = {
         image:any,
         type:string,
         userId:number,
-        product_name:string
+        product_name:string,
+        link: string,
+        price: number
     ) => {
 
         const result = await prisma.publications.create({
@@ -97,7 +99,8 @@ const model = {
                         id: userId
                     }
                 },
-                
+                link,
+                price
               },
         })
 

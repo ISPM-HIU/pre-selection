@@ -29,6 +29,8 @@ model Publications {
   products      String?         @db.VarChar(255)
   image         String?         @db.VarChar(255)
   type          String?         @db.VarChar(255) // petrole, gaz, etc...
+  link          String?
+  price         Int?
   user          Users?          @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId        Int
   Notifications Notifications[]

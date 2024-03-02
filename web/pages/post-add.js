@@ -61,6 +61,7 @@ const Billing = () => {
     formData.append("product_name", data.product_name);
     formData.append("description", data.description);
     formData.append("userId", token.user.id);
+    formData.append("price", data.price);
     console.log(formData)
     let mat_name = []
     matieres.forEach(mat => {
@@ -122,6 +123,26 @@ const Billing = () => {
                           name="product_name"
                           className="form-control"
                           placeholder="Entrez le nom de votre produit"
+                          id="nomProduit"
+                          required
+                        />
+                      </div>
+                    </Row>
+                    <Row className="mb-3">
+                      <label
+                        htmlFor="nomProduit"
+                        className="col-sm-4 col-form-label
+                      form-label"
+                      >
+                        Prix du produit
+                      </label>
+                      <div className="col-md-8 col-12">
+                        <input
+                          type="number"
+                          onChange={handleChange}
+                          name="price"
+                          className="form-control"
+                          placeholder="Entrez le prix de votre produit"
                           id="nomProduit"
                           required
                         />
