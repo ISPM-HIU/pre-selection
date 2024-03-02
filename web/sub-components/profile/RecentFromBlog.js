@@ -128,7 +128,9 @@ const RecentFromBlog = ({ props }) => {
             <div className="row">
               <div className="col-8">
                 <span className="me-1 me-md-4">
-                  <button type="button" className="btn btn-outline-primary" onClick={buyAction}>  <i className="fe fe-shopping-bag"></i>  Acheter</button>
+                  <Link href={"/buy/"+item.id}>
+                    <button type="button" className="btn btn-outline-primary">  <i className="fe fe-shopping-bag"></i>  Acheter</button>
+                  </Link>
                 </span>
                 <span className="me-1 me-md-4">
                 <Link href={`/post/${props.id}`}>

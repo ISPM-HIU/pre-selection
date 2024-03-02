@@ -14,6 +14,7 @@ const Header = (props) => {
             backgroundSize: "cover",
           }}
         ></div>
+        coucou
         <div className="bg-white rounded-bottom smooth-shadow-sm ">
           <div className="d-flex align-items-center justify-content-between pt-4 pb-6 px-4">
             <div className="d-flex align-items-center">
