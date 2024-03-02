@@ -48,7 +48,7 @@ const Settings = () => {
         .post("/validationMaterial", { material: materials })
         .then((response) => {
           console.log(response.data)
-          // setMaterialDisable([response.data.material]);
+          setMaterialDisable([response.data.material]);
         })
         .catch((err) => {
           console.log(err);

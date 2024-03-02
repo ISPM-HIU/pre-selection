@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'enter-a-very-secretive-key-3479373'
 
 # defining the api-endpoint 
-API_ENDPOINT = "http://localhost:9090/api/publications/generate/bot/response"
+API_ENDPOINT = "http://127.0.0.1:9090/api/publications/generate/bot/response"
 
 def find_response(id, max_lemm, responses): 
     for response in responses:
