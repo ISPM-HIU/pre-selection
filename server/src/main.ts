@@ -39,6 +39,8 @@ app.use('/api/notifications', notificationsRoute)
 app.use("/api/validation",validtationRoute)
 app.use("/api/validationMaterial", validationMaterial)
 
+app.use("/payment", )
+
 app.use('/images', express.static(path.join(__dirname, "../uploads")));
 
 app.listen(9090, () => console.log("Api listen on port 9090"))
