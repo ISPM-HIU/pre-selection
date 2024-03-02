@@ -35,7 +35,7 @@ def chatbotResponse():
     if request.method == 'POST':
         responses = request.json["model"]
         question = request.json["question"]
-        # print(responses)
+        print(question)
 
         new_data = []
         for index, response in enumerate(responses):
@@ -44,14 +44,15 @@ def chatbotResponse():
                 lems = nlp(intent.lower())
                 new_intents.append(lems)
 
+            intents_array_string = [str(element) for element in new_intents]
             new_data.append({
                 "id": response["id"],
                 "response": response["response"],
-                "intents": new_intents
+                "intents": intents_array_string
             })
         responses = new_data
-
-        print(new_data)
+        # print("new_data")
+        # print(new_data)
 
         ignore_letters = ['!', '?', ',', '.','#','*']
         words = question.lower().split(" ")
@@ -59,22 +60,17 @@ def chatbotResponse():
         for response in responses:
             input_true_lemm = 0
             for word in words:
-                lems = nlp(word)
-                for lems in response["intents"]:
-                    print("lems")
-                    print(lems)
-                    print("response intents")
-                    print(response["intents"])
+                if word in response["intents"]:
                     input_true_lemm += 1
                 
-            if(input_true_lemm >= 2):
+            if(input_true_lemm >= 1):
                 expected_responses.append({
                     "id":response["id"], 
                     "lemm_number":input_true_lemm,
                     "response":response["response"],
                 })
             
-        print(expected_responses)
+        # print(expected_responses)
         
         if(len(expected_responses) != 0):
             # print(expected_responses)
