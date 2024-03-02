@@ -42,7 +42,7 @@ const Settings = () => {
     <>
       <Container fluid className="p-6">
         {/* Page Heading */}
-        <PageHeading heading="Vos matériels" />
+        <PageHeading heading="Analyse des matériels." />
         <div className="py-6">
           <Row>
             <MaterialPerso isValid={isValid} list={addListMaterial} />

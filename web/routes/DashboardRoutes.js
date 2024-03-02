@@ -45,7 +45,7 @@ export const DashboardMenu = [
 	{
 		id: uuid(),
 		link: '/materials',
-		title: 'Analyse de materiel',
+		title: 'Analyse des matériels',
 		icon: "book"
 	},
 	// {

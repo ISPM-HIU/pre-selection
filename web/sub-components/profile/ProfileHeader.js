@@ -36,33 +36,8 @@ const ProfileHeader = () => {
             <div className="col-7">
               <ul className="nav nav-lt-tab px-4" id="pills-tab" role="tablist">
                 <li className="nav-item">
-                  <Link className="nav-link active" href="#">
-                    Overview
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" href="#">
-                    Project
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" href="#">
-                    Files
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" href="#">
-                    Teams
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" href="#">
-                    Followers
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" href="#">
-                    Activity
+                  <Link className="nav-link" href="/">
+                    Vers un avenir énergétique plus vert, un achat à la fois.
                   </Link>
                 </li>
               </ul>
