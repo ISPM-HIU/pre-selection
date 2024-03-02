@@ -35,8 +35,6 @@ def chatbotResponse():
     if request.method == 'POST':
         responses = request.json["model"]
         question = request.json["question"]
-        print(question)
-        print("----------1---------")
         # print(responses)
 
         new_data = []
@@ -52,7 +50,6 @@ def chatbotResponse():
                 "intents": new_intents
             })
         responses = new_data
-        print("----------2---------")
 
         print(new_data)
 
@@ -69,7 +66,6 @@ def chatbotResponse():
                     print("response intents")
                     print(response["intents"])
                     input_true_lemm += 1
-                print("boucle 2")
                 
             if(input_true_lemm >= 2):
                 expected_responses.append({
@@ -78,17 +74,15 @@ def chatbotResponse():
                     "response":response["response"],
                 })
             
-        print("----------3---------")
         print(expected_responses)
         
         if(len(expected_responses) != 0):
             # print(expected_responses)
             res_from_db = find_max_lemm_number(expected_responses, responses)
-            print("Step 6")
             print(res_from_db)
-            return app.json.response(res_from_db)
+            return jsonify(res_from_db)
         else: 
-            return app.json.response('Je n\'arrive pas à répondre à cette question. Veuillez me demander une autre s\'il vous plait')
+            return jsonify('Je n\'arrive pas à répondre à cette question. Veuillez me demander une autre s\'il vous plait')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port='8888', debug=True)

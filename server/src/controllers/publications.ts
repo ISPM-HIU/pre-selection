@@ -165,7 +165,7 @@ const controller = {
                     }
                 })
                 if(response) {
-                    console.log("Success:", response.data);
+                    res.status(200).send(response.data);
                 }
             } catch (error) {
                 console.error("Error:", error);
