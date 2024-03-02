@@ -5,12 +5,16 @@ import { MoreVertical } from "react-feather";
 import { Col, Row, Card, Form, Dropdown, Image, Button, Modal } from "react-bootstrap";
 import useHttps from "hooks/useHttp";
 import moment from 'moment';
-import 'moment/locale/fr'; 
+import 'moment/locale/fr';
+import { getToken } from "services/token";
 
 const RecentFromBlog = ({ props }) => {
   const [showModal, setShowModal] = useState(false);
   const timeFromNow = moment(props.createdAt).fromNow();
-  console.log(props)
+  const token = getToken()
+  const {http} = useHttps()
+  const [item,setItem] = useState(props)
+
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <Link
       href=""
@@ -49,6 +53,29 @@ const RecentFromBlog = ({ props }) => {
       console.log(error)
     }
   }
+
+  function buyAction(){
+    http.post("/publications/action",
+    {
+      "publicationId":item.id,
+      "userId":token.user.id,
+      "actionType":"buy"
+    }).then(e=>{
+      console.log(e)
+    })
+  }
+
+  function investAction(){
+    http.post("/publications/action",
+    {
+      "publicationId":item.id,
+      "userId":token.user.id,
+      "actionType":"invest"
+    }).then(e=>{
+      console.log(e)
+    })
+  }
+
   return (
     <>
       <Card className="mb-6" >
@@ -100,7 +127,7 @@ const RecentFromBlog = ({ props }) => {
             <div className="row">
               <div className="col-8">
                 <span className="me-1 me-md-4">
-                  <button type="button" className="btn btn-outline-primary">  <i className="fe fe-shopping-bag"></i>  Acheter</button>
+                  <button type="button" className="btn btn-outline-primary" onClick={buyAction}>  <i className="fe fe-shopping-bag"></i>  Acheter</button>
                 </span>
                 <span className="me-1 me-md-4">
                   <Button className="btn btn-info" variant="link" onClick={() => setShowModal(true)}>
@@ -110,10 +137,12 @@ const RecentFromBlog = ({ props }) => {
               </div>
               <div className="col-4 d-flex justify-content-end">
                 <span>
-                  <button type="button" className="btn btn-dark"
+                  <button type="button" 
+                    onClick={investAction}
+                    className="btn btn-dark"
                     style={{
                       backgroundColor: " #562356;"
-                    }}><i className="fe fe-share-2"></i> Partager</button>
+                    }}><i className="fe fe-share-2"></i>Investir</button>
                 </span>
               </div>
             </div>

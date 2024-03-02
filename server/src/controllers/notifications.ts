@@ -5,7 +5,7 @@ import publicationModel from "../models/publications"
 
 const controller = {
     getAll: async (req: Request, res: Response) => {
-        const userId = parseInt(req.body.userId)
+        const userId = parseInt(req.params.userId)
         try {
             let allPub = await publicationModel.getForUser(userId)
             if(allPub) {

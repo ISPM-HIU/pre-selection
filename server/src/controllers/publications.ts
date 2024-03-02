@@ -54,7 +54,7 @@ const controller = {
         let { publicationId, userId, actionType } = req.body
 
         try { 
-            let data = await model.action(publicationId, userId, actionType)
+            let data = await model.action(parseInt(publicationId), parseInt(userId), actionType)
 
             if(data)
                 res.status(200).send(data)
