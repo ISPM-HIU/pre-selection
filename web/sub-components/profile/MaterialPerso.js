@@ -54,7 +54,7 @@ const MaterialPerso = (props) => {
           {/* card title */}
           <Card.Title as="h4">Matériel personnel</Card.Title>
           <p className="mt-2 mb-6">
-            Vous pouvez ajouter des materiels que vous pensez qu'il utilise de
+            Vous pouvez ajouter des materiels que vous pensez utiliser de
             l'énérgie.
           </p>
           <Row>
