@@ -2,6 +2,8 @@ import compromise from "fr-compromise";
 import { materialPerso } from "../utils/materialPerso";
 
 export const getMaterials = (prompt: string)=>{
+    console.log(prompt);
+    
     var entities: Array<any> = [],
         prompt_compromise = compromise(prompt),
         frigidaire = materialPerso.frigidaire.descWord,
@@ -19,6 +21,7 @@ export const getMaterials = (prompt: string)=>{
             description: materialPerso.chauffage.description
         })
     }
-
+    console.log(entities);
+    
     return entities
 }

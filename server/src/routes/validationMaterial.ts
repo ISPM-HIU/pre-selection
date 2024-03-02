@@ -11,13 +11,17 @@ router.post(
             material
         } = req.body
         var suggestions = [] as any
+        
         const getMaterial : any = getMaterials(material);
+        
         if(getMaterial) {
             for await (let materiel of getMaterial) {
                 let sug = await getSuggestion(materiel.materiel)
                 suggestions.push(sug)
             }
         }
+        console.log(suggestions);
+        
         res.status(200).send({material: getMaterial, suggestions});
     }
 )
