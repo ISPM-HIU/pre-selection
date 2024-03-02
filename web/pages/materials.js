@@ -16,23 +16,57 @@ import useHttps from "hooks/useHttp";
 const Settings = () => {
   const [listMaterial, setListMaterial] = useState([]);
   const [materialDisable, setMaterialDisable] = useState([]);
+  const [suggestion, setSuggestion] = useState([]);
   const [loading, setLoading] = useState(false);
   const [idMaterial, setIdMaterial] = useState([]);
   const { http } = useHttps();
+
+  const getSuggesstion = () => {
+    const materials = listMaterial.join(", ");
+    try {
+        http
+        .post("/publications/get-bot-response", { question: materials })
+        .then((response) => {
+          console.log(response.data)
+          setSuggestion(response.data);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setLoading(false);
+        });
+    }
+    catch (error) {
+      console.log(error)
+    }
+  }
+
+  const getValidation = async () => {
+    try {
+        const materials = listMaterial.join(", ");
+        http
+        .post("/validationMaterial", { material: materials })
+        .then((response) => {
+          console.log(response.data)
+          // setMaterialDisable([response.data.material]);
+        })
+        .catch((err) => {
+          console.log(err);
+          setLoading(false);
+        });
+    }
+    catch (error) {
+      console.log(error)
+    }
+  }
+
+
   const isValid = () => {
     setLoading(true);
-    const materials = listMaterial.join(", ");
-    http
-      .post("/validationMaterial", { material: materials })
-      .then((response) => {
-        setMaterialDisable([response.data.material]);
-        setIdMaterial(response.data.suggestions);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoading(false);
-      });
+    Promise.all([
+      getValidation(),
+      getSuggesstion()
+    ])
   };
   const addListMaterial = (value) => {
     console.log("ajout");
@@ -51,7 +85,11 @@ const Settings = () => {
             )}
           </Row>
           <Row>
-            <MaterialSuggestion id={idMaterial} />
+            {
+              suggestion.length != 0 && (
+                <MaterialSuggestion id={idMaterial} suggestion={suggestion} />
+              )
+            }
           </Row>
         </div>
       </Container>
