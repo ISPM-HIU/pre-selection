@@ -66,7 +66,7 @@ const controller = {
             res.status(500).send(error.message)
         }
     },
-    create: async (req: any, res: Response) => {
+    create: async (req: any, res: any) => {
         let { 
             description,
             products,
@@ -77,8 +77,7 @@ const controller = {
 
         let userId = parseInt(req.body.userId)
         try {
-
-            if(req.files && req.files.image && req.files.image.name){
+            if(req.files && req.files.image){
                 const src = await uploadFile('./uploads/',req.files.image)
                 if(src){
                     url_image = src

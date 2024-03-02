@@ -107,11 +107,13 @@ const RecentFromBlog = ({ props }) => {
             <p className="mb-4">
               {props.description}
             </p>
-            <Image
-              src="/images/blog/blog-img-1.jpg"
-              className="rounded-3 w-100"
-              alt=""
-            />
+            {props.image && (
+                <Image
+                  src={`http://localhost:9090/images/${props.image}`}
+                  className="rounded-3 w-100"
+                  alt=""
+                />
+              )}
           </div>
           {/* icons */}
           <div className="mb-4">
@@ -161,11 +163,13 @@ const RecentFromBlog = ({ props }) => {
           {/* Ajoutez ici le contenu de votre modal pour le commentaire */}
           <div className="d-flex mb-5 smooth-shadow-sm p-3" style={{ borderRadius: " 4px" }}>
             <div>
-              <Image
-                src="/images/avatar/avatar-7.jpg"
-                className="rounded-circle avatar-md"
-                alt=""
-              />
+              {/* {props.image && (
+                <Image
+                  src={`http://localhost:9090/images/${props.image}`}
+                  className="rounded-circle avatar-md"
+                  alt=""
+                />
+              )} */}
             </div>
             <div className="ms-3 ">
               <h5 className="mb-1">Irene Hargrove</h5>

@@ -23,7 +23,7 @@ const Billing = () => {
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
   const [validation, setValidation] = useState(null);
-  const { http } = useHttps();
+  const { http, fileHttp } = useHttps();
   const token = getToken();
   const router = useRouter();
 
@@ -72,7 +72,7 @@ const Billing = () => {
       let validation = await http.post("/validation", {prompt: result})
       if(validation.data.validation == "Success") {
         setValidation(true)
-        let response = await http.post("/publications", formData)
+        let response = await fileHttp.post("/publications", formData)
         if(response) {
           setLoading(false)
           router.push("/home")
@@ -84,22 +84,14 @@ const Billing = () => {
       }
     } catch (error) {
       setLoading(false)
+      setValidation(false)
       console.log(error)
     }
   } 
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-
-    if (file) {
-      const reader = new FileReader();
-
-      reader.onload = (event) => {
-        setImage(event.target.result);
-      };
-
-      reader.readAsDataURL(file);
-    }
+    setImage(file)
   }
 
   return (

@@ -10,16 +10,16 @@ import notificationsRoute from './routes/notifications'
 import validationMaterial from "./routes/validationMaterial"
 import fs from 'fs';
 import path from 'path';
+import fileUpload from "express-fileupload";
+import compression from 'compression';
 
-// Define the directory to store the uploaded images
-const uploadDir = path.join(__dirname, 'uploads');
+const app = express();
 
-// Create the directory if it does not exist
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir);
-}
-
-const app = express()
+app.use(fileUpload({
+    createParentPath: true
+  }));
+  app.use(express.static("public"));
+  app.use(compression());
 
 app.use(cors())
 app.use(express.urlencoded({extended : true}))
@@ -38,5 +38,7 @@ app.use('/api/notifications', notificationsRoute)
 // Validation API
 app.use("/api/validation",validtationRoute)
 app.use("/api/validationMaterial", validationMaterial)
+
+app.use('/images', express.static(path.join(__dirname, "../uploads")));
 
 app.listen(9090, () => console.log("Api listen on port 9090"))
