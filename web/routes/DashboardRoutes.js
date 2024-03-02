@@ -48,15 +48,15 @@ export const DashboardMenu = [
 		title: 'Analyse des matériels',
 		icon: "book"
 	},
-	// {
-	// 	id: uuid(),
-	// 	link: '/chatbot',
-	// 	title: 'ChatBot',
-	// 	icon: "cloud"
-	// },
-	// {
-	// 	id: uuid(), link: '/404', name: '404 Error'
-	// },
+	{
+		id: uuid(),
+		link: '/chatbot',
+		title: 'ChatBot',
+		icon: "cloud"
+	},
+	{
+		id: uuid(), link: '/404', name: '404 Error'
+	},
 
 	// {
 	// 	id: uuid(),

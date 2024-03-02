@@ -31,7 +31,7 @@ export default function Page() {
     }
 
     useEffect(() => {
-        const slug = router.query.slug
+        const slug = parseInt(router.query.slug)
         fetchPost(slug)
     }, [])
 

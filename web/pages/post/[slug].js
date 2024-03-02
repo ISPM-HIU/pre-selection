@@ -7,8 +7,15 @@ import { getToken } from "services/token"
 import { PageHeading } from "widgets"
 
 export default function Page() {
-    const token = getToken()
     const router = useRouter()
+    const [token, setToken] = useState(0)
+    useEffect(()=>{
+        try{
+            setToken(getToken())
+        }catch(err){
+            router.push('/')
+        }
+    },[])
     const { http } = useHttps()
     const [idPost, setIdPost] = useState("")
     const [title, setTitle] = useState("")
@@ -19,13 +26,13 @@ export default function Page() {
 
 
     // This is the data of the /comment/[slug]
-    const slug = router.query.slug
+    const slug = parseInt(router.query.slug)
     
     function sendLike(){
         http.post("/likes",
         {
             publicationId:idPost,
-            userId:token.user.id
+            userId:parseInt(token.user.id)
         })
         .then(e=>{
             fetchPost()
@@ -33,7 +40,7 @@ export default function Page() {
     }
 
     function fetchPost(){
-        http.get("/publications/" + slug)
+        http.get("/publications/" + parseInt(slug))
             .then(
                 e => {
                     setIdPost(e.data.id)

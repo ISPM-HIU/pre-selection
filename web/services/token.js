@@ -1,6 +1,9 @@
 const getToken = () => {
-  let token = localStorage.getItem("ecoMarket");
-  if(token) return JSON.parse(token)
+  if (localStorage) {
+    let token = localStorage.getItem("ecoMarket");
+    if (token) return JSON.parse(token)
+  }
+
   return null
 };
 const setToken = (token) => {
