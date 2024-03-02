@@ -57,6 +57,7 @@ export default function Page() {
             "text":commInput
         }).then(e=>{
             fetchPost()
+            setCommInput("")
         })
     }
 
@@ -64,9 +65,6 @@ export default function Page() {
         <Card className="m-6">
             <Card.Body>
                 <PageHeading heading={title} />
-                <h4>
-                    <Badge pill bg="info" className="me-1">Info</Badge>
-                </h4>
                 <p>
                     {desc}
                 </p>
@@ -74,7 +72,7 @@ export default function Page() {
             </Card.Body>
             <Card.Footer>
                 <div>
-                    <Button variant="danger" className="mx-2" onClick={sendLike}>
+                    <Button variant="link" className="mx-2" onClick={sendLike}>
                         <Heart /> J'adore ({like})
                     </Button>
                 </div>

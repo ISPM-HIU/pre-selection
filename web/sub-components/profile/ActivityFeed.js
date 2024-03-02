@@ -10,7 +10,7 @@ const ActivityFeed = () => {
           {/* card body */}
           <Card.Body>
             {/* card title */}
-            <Card.Title as="h4">Récement consulté</Card.Title>
+            <Card.Title as="h4">Récemment consulté</Card.Title>
 
             <div className="d-flex mb-5">
               <div>

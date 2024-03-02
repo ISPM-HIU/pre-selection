@@ -6,7 +6,7 @@ const MyTeam = () => {
   return (
     <Card className="mb-4">
       <Card.Body>
-        <Card.Title as="h4">Vos contact</Card.Title>
+        <Card.Title as="h4">Vos contacts</Card.Title>
         <div className="d-flex justify-content-between align-items-center mb-4">
           <div className="d-flex align-items-center">
             <div>

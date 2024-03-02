@@ -1,15 +1,25 @@
 // import node module libraries
 import { Row, Col, Card, Image } from "react-bootstrap";
 
-function SponsorLists() {
+import moment from 'moment';
+import 'moment/locale/fr';
+import Link from "next/link";
+
+function SponsorLists({ post }) {
+  const timeFromNow = moment(post.createdAt).fromNow();
+  console.log(post)
   return (
-    <Col className="m-1">
+    <Col md={5} className="m-1">
       {/* card */}
       <Card >
         {/* card body */}
         <Card.Body>
           {/* card title */}
-          <Card.Title as="h4">Mes sponsors</Card.Title>
+          <Card.Title as="h4">
+            <Link href={`/post/${post.publication.id}`}>
+              {post.publication.product_name}
+            </Link>
+          </Card.Title>
           <Card className="shadow-none border hover-anim">
             <Card.Body>
               <div className="d-flex ">
@@ -20,9 +30,13 @@ function SponsorLists() {
                     alt="" />
                 </div>
                 <div className="ms-3 ">
-                  <h5 className="mb-1">Dianna Smiley</h5>
+                  <h5 className="mb-1">{post.user.name}</h5>
                   <p className="text-muted mb-2">
-                    Just create a new Project in Dashui...
+                    {timeFromNow}
+                  </p>
+                  <p className="text-muted mb-2">
+                    {post.type == "invest" ? "Je veux investir dans votre projet":"Je veux acheter un de ces projets"}
+                    voici mes contact: {post.user.email} / {post.user.phone}
                   </p>
                 </div>
               </div>

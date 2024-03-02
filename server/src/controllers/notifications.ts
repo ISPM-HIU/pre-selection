@@ -8,11 +8,12 @@ const controller = {
         const userId = parseInt(req.params.userId)
         try {
             let allPub = await publicationModel.getForUser(userId)
-            if(allPub) {
+            if(allPub.length) {
                 let data : any = []
 
                 for await (let pub of allPub) {
                     let notif = await model.getAll(pub.id)
+                    console.log(data)
                     data.push(...notif)
                 }
 

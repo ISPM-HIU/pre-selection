@@ -130,7 +130,7 @@ const RecentFromBlog = ({ props }) => {
                 </span>
                 <span className="me-1 me-md-4">
                 <Link href={`/post/${props.id}`}>
-                  <Button className="btn btn-info" variant="link">
+                  <Button className="btn" variant="link">
                     <i className="fe fe-message-square"></i> {props.Comments.length || 0} Commentaire
                   </Button>
                   </Link>
@@ -143,7 +143,7 @@ const RecentFromBlog = ({ props }) => {
                     className="btn btn-dark"
                     style={{
                       backgroundColor: " #562356;"
-                    }}><i className="fe fe-share-2"></i>Investir</button>
+                    }}><i className="fe fe-dollar-sign"></i> Investir</button>
                 </span>
               </div>
             </div>

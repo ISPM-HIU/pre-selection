@@ -5,7 +5,11 @@ const model = {
     getAll: async (pubId:number) => {
         let result = await prisma.notifications.findMany({
             where: {
-                id: pubId
+                publicationId: pubId
+            },
+            include: {
+                user: true,
+                publication: true
             },
             orderBy: {
                 id: "desc"

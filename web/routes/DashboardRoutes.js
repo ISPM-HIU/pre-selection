@@ -45,15 +45,15 @@ export const DashboardMenu = [
 	{
 		id: uuid(),
 		link: '/materials',
-		title: 'Liste des materiels',
+		title: 'Analyse de materiel',
 		icon: "book"
 	},
-	{
-		id: uuid(),
-		link: '/chatbot',
-		title: 'ChatBot',
-		icon: "cloud"
-	},
+	// {
+	// 	id: uuid(),
+	// 	link: '/chatbot',
+	// 	title: 'ChatBot',
+	// 	icon: "cloud"
+	// },
 	// {
 	// 	id: uuid(), link: '/404', name: '404 Error'
 	// },

@@ -1,7 +1,7 @@
 // import node module libraries
 import React, { useEffect, useState } from "react";
 import Link from 'next/link';
-import { Col, Card, Dropdown, Image } from 'react-bootstrap';
+import { Col, Card, Dropdown, Image, Button } from 'react-bootstrap';
 import { MoreVertical } from 'react-feather';
 
 // import required data files
@@ -42,9 +42,9 @@ const MaterialPersoDisable = (props) => {
                 <Card.Body>
                     <Card.Title as="h4">Matériaux écologiquement nuisibles</Card.Title>
                     {
-                        material.length && material[0].map((item, index) => {
+                        material.length ? material[0].map((item, index) => {
                             return <ListMaterialComponent key={index} materiel={item.materiel} description={item.description} />
-                        })
+                        }) : ( <p>Pas de matériaux</p>)
                     }
                 </Card.Body>
             </Card>
