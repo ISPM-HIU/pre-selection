@@ -59,10 +59,13 @@ app.post("/webhook", async (req, res) => {
                                 }
                             }).then(async(response)=>{
                                 console.log(response.data.response);
-                                
+                                const id = response.data.id
+                                const response_value = response.data.response
+
+                                var res_whatsapp = `${response_value}\n\n\nVoici une produit qui pourrez vous plaire : \n http://localhost:3000/post/${id}`
                                 const res_message = await sendMessage(
                                     number,
-                                    response.data.response
+                                    res_whatsapp
                                 );
                             }).catch((err)=>{
                                 console.log(err);
