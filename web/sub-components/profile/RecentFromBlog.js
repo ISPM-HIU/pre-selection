@@ -81,7 +81,7 @@ const RecentFromBlog = ({ props }) => {
       <Card className="mb-6" >
         
         <Card.Body>
-        <Link href={`/post/${props.id}`}>
+       
         <div className="d-flex justify-content-between mb-5 align-items-center">
             {/* avatar */}
             <div className="d-flex align-items-center">
@@ -121,7 +121,6 @@ const RecentFromBlog = ({ props }) => {
           </div>
           <div className=" border-top py-2 d-flex align-items-center mb-4">
           </div>
-        </Link>
           
           <div className="mb-4">
             <div className="row">
@@ -130,9 +129,11 @@ const RecentFromBlog = ({ props }) => {
                   <button type="button" className="btn btn-outline-primary" onClick={buyAction}>  <i className="fe fe-shopping-bag"></i>  Acheter</button>
                 </span>
                 <span className="me-1 me-md-4">
-                  <Button className="btn btn-info" variant="link" onClick={() => setShowModal(true)}>
-                    <i className="fe fe-message-square"></i> Commentaire
+                <Link href={`/post/${props.id}`}>
+                  <Button className="btn btn-info" variant="link">
+                    <i className="fe fe-message-square"></i> {props.Comments.length || 0} Commentaire
                   </Button>
+                  </Link>
                 </span>
               </div>
               <div className="col-4 d-flex justify-content-end">
