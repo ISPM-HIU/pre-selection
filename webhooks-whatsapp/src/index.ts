@@ -9,21 +9,7 @@ const app = express();
 const dotenv = config();
 const port = process.env.PORT;
 app.use(express.json());
-const fetch_data = async (message: string) => {
-    const url = "http://127.0.0.1:8888/chatbot";
-    try {
-        let response = await axios.post(url, { "question": message }, {
-            headers: {
-                "Content-Type": "application/json",
-            }
-        })
-        if (response) {
-            return response.data.question;
-        }
-    } catch (error) {
-        console.log(error)
-    }
-}
+
 app.get("/webhook", (req, res) => {
     console.log("Verification API");
     const verify_token = process.env.VERIFY_TOKEN;
@@ -66,17 +52,17 @@ app.post("/webhook", async (req, res) => {
                             request.entry[0].changes[0].value.contacts[0].wa_id;
 
                         // Set your action here (API Request for example)
-                        const url = "http://127.0.0.1:8888/chatbot";
+                        const url = "http://127.0.0.1:9090/api/publications/get-bot-response";
                             await axios.post(url, { "question": message }, {
                                 headers: {
                                     "Content-Type": "application/json",
                                 }
                             }).then(async(response)=>{
-                                console.log(response.data.response.response);
+                                console.log(response.data.response);
                                 
                                 const res_message = await sendMessage(
                                     number,
-                                    response.data.response.response
+                                    response.data.response
                                 );
                             }).catch((err)=>{
                                 console.log(err);
